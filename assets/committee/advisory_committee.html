@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advisor Committee - IEMECON 2027</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        .advisor-avatar {
+            width: 96px;
+            height: 96px;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--primary), #1e3a5f);
+            color: var(--secondary);
+            border: 4px solid var(--white);
+            box-shadow: 0 12px 24px rgba(10, 25, 47, 0.16);
+        }
+
+        .advisor-avatar span {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 800;
+            letter-spacing: 0;
+        }
+
+        .member-card:hover .advisor-avatar {
+            background: linear-gradient(135deg, #111827, var(--primary));
+        }
+
+        .advisory-search-panel {
+            position: relative;
+            max-width: 760px;
+            margin: 0 auto 70px;
+        }
+
+        .advisory-search-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+            min-height: 68px;
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            box-shadow: 0 18px 45px rgba(10, 25, 47, 0.1);
+            transition: var(--transition);
+        }
+
+        .advisory-search-box:focus-within {
+            border-color: var(--secondary);
+            box-shadow: 0 22px 55px rgba(245, 158, 11, 0.18);
+            transform: translateY(-2px);
+        }
+
+        .advisory-search-icon {
+            flex: 0 0 64px;
+            color: var(--secondary);
+            font-size: 1.25rem;
+            text-align: center;
+        }
+
+        .advisory-search-input {
+            width: 100%;
+            min-width: 0;
+            height: 66px;
+            border: 0;
+            outline: 0;
+            background: transparent;
+            color: var(--primary);
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0 62px 0 0;
+        }
+
+        .advisory-search-input::placeholder {
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .search-clear {
+            position: absolute;
+            right: 18px;
+            width: 36px;
+            height: 36px;
+            border: 0;
+            border-radius: 50%;
+            background: #f1f5f9;
+            color: #64748b;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .search-clear.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .search-clear:hover {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+
+        @media (max-width: 640px) {
+            .advisory-search-panel {
+                margin-bottom: 46px;
+            }
+
+            .advisory-search-box {
+                min-height: 58px;
+                border-radius: 14px;
+            }
+
+            .advisory-search-icon {
+                flex-basis: 50px;
+                font-size: 1rem;
+            }
+
+            .advisory-search-input {
+                height: 58px;
+                font-size: 0.92rem;
+                padding-right: 50px;
+            }
+
+            .search-clear {
+                right: 12px;
+                width: 32px;
+                height: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+        <nav>
+        <a class="logo" href="../../index.html"><img src="https://lh3.googleusercontent.com/pw/AP1GczOd1R4xurxY-9gnKw_OJkBQxA-es54hu7Nq7YYan0k_IXGXLsnxVaGTREmQUl6NQUyRvpg2ZhObUTvQ2ZEPKlq9IWcls3_1d454C-FrjjMU7BJ4jPbJxyazyon8wNLcG2p02VkcrpswpNrqHwNmp6n-=w1536-h1024-s-no-gm?authuser=0" alt="IEMECON 2027 logo" class="site-logo"><img src="https://lh3.googleusercontent.com/pw/AP1GczNIygNWm3eRx9VJhpLwwxxFlS4j7PaHrRSSfmCuNcKe1yYeJXeI3P0QkRlDSLd5Qc-0wNg4gVUo7nomqT_MKhT97tAlKbhGjvPiXr6sMBPR8XOTlOYRxCGXXtZntqScUgv4o4uquf7Oar3Ebh4dPEbw=w597-h418-s-no-gm?authuser=0" alt="Secondary logo" class="site-logo"><img src="https://lh3.googleusercontent.com/pw/AP1GczNjy2upmBvXuMtpEDItIe1GVmwYo2Galz4lXj2_FFDy6F45opy9qLOit_yxdoWpGLyCFgfu6I1MJScA2fqwRhwhYGFUflMTDm66xAP75blPSdXq1Ng0sOcYjSCpuWLsBmT3D3zYMIVtbQzgeeC1bkEu=w1024-h1024-s-no-gm?authuser=0" alt="Third logo" class="site-logo"></a>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">About Us <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="../about_us.html">About</a></li>
+                    <li><a href="../gallery.html">Gallery</a></li>
+                    <li class="nested-dropdown">
+                        <a href="#">Previous Conferences <i class="fas fa-chevron-right"></i></a>
+                        <ul class="nested-content">
+                            <li><a href="../Previous_Conferences/iemecon2019.html">IEMECON 2019</a></li>
+                            <li><a href="../Previous_Conferences/iemecon2021.html">IEMECON 2021</a></li>
+                            <li><a href="../Previous_Conferences/iemecon2023.html">IEMECON 2023</a></li>
+                            <li><a href="../Previous_Conferences/iemecon2024.html">IEMECON 2024</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../sister_conference.html">Sister Conferences</a></li>
+                    <li><a href="../Contributors.html">Contributors</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Authors <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="../call_for_papers.html">Call For Papers</a></li>
+                    <li><a href="../technical_tracks.html">Technical Tracks</a></li>
+                    <li><a href="../important_dates.html">Important Dates</a></li>
+                    <li><a href="../author_guidelines.html">Author Guidelines</a></li>
+                    <li><a href="../submission.html">Submission</a></li>
+                    <li><a href="../proceedings.html">Conference Proceedings</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Committee <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="../committee/oversight_committee.html">Section Oversight Committee</a></li>
+                    <li><a href="../committee/advisory_committee.html">Advisor Committee</a></li>
+                    <li><a href="../committee/steering_committee.html">Steering Committee</a></li>
+                    <li><a href="../committee/organizing_committee.html">Organizing Committee</a></li>
+                    <li><a href="../committee/technical_program_committee.html">Technical Program Committee</a></li>
+                    <li><a href="../committee/Session_chairs.html">Session Chairs</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Program <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="../program/program_schedule.html">Program Schedule</a></li>
+                    <li><a href="../program/keynotes.html">Keynotes</a></li>
+                    <li><a href="../program/special_sessions.html">Special Sessions</a></li>
+                </ul>
+            </li>
+            <li><a href="../registration_fees.html">Registration</a></li>
+            <li class="dropdown">
+                <a href="#">Venue <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="../venue/explore_pink_city.html">Explore Pink City</a></li>
+                    <li><a href="../venue/accomodation.html">Accommodation</a></li>
+                    <li><a href="../venue/reach_to_venue.html">Reach to Venue</a></li>
+                </ul>
+            </li>
+            <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+        <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <a class="logo" href="../../index.html"><img src="https://lh3.googleusercontent.com/pw/AP1GczOd1R4xurxY-9gnKw_OJkBQxA-es54hu7Nq7YYan0k_IXGXLsnxVaGTREmQUl6NQUyRvpg2ZhObUTvQ2ZEPKlq9IWcls3_1d454C-FrjjMU7BJ4jPbJxyazyon8wNLcG2p02VkcrpswpNrqHwNmp6n-=w1536-h1024-s-no-gm?authuser=0" alt="IEMECON 2027 logo" class="site-logo"><img src="https://lh3.googleusercontent.com/pw/AP1GczNIygNWm3eRx9VJhpLwwxxFlS4j7PaHrRSSfmCuNcKe1yYeJXeI3P0QkRlDSLd5Qc-0wNg4gVUo7nomqT_MKhT97tAlKbhGjvPiXr6sMBPR8XOTlOYRxCGXXtZntqScUgv4o4uquf7Oar3Ebh4dPEbw=w597-h418-s-no-gm?authuser=0" alt="Secondary logo" class="site-logo"><img src="https://lh3.googleusercontent.com/pw/AP1GczNjy2upmBvXuMtpEDItIe1GVmwYo2Galz4lXj2_FFDy6F45opy9qLOit_yxdoWpGLyCFgfu6I1MJScA2fqwRhwhYGFUflMTDm66xAP75blPSdXq1Ng0sOcYjSCpuWLsBmT3D3zYMIVtbQzgeeC1bkEu=w1024-h1024-s-no-gm?authuser=0" alt="Third logo" class="site-logo"></a>
+            <div class="close-menu">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">About Us <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="../about_us.html">About</a></li>
+                    <li><a href="../gallery.html">Gallery</a></li>
+                    <li class="mobile-nested-dropdown">
+                        <div class="mobile-nested-title">Previous Conferences <i class="fas fa-chevron-down"></i></div>
+                        <ul class="mobile-nested-content">
+                            <li><a href="../Previous_Conferences/iemecon2019.html">IEMECON 2019</a></li>
+                            <li><a href="../Previous_Conferences/iemecon2021.html">IEMECON 2021</a></li>
+                            <li><a href="../Previous_Conferences/iemecon2023.html">IEMECON 2023</a></li>
+                            <li><a href="../Previous_Conferences/iemecon2024.html">IEMECON 2024</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../sister_conference.html">Sister Conferences</a></li>
+                    <li><a href="../Contributors.html">Contributors</a></li>
+                </ul>
+            </li>
+
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">Authors <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="../call_for_papers.html">Call For Papers</a></li>
+                    <li><a href="../technical_tracks.html">Technical Tracks</a></li>
+                    <li><a href="../important_dates.html">Important Dates</a></li>
+                    <li><a href="../author_guidelines.html">Author Guidelines</a></li>
+                    <li><a href="../submission.html">Submission</a></li>
+                    <li><a href="../proceedings.html">Conference Proceedings</a></li>
+                </ul>
+            </li>
+
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">Committee <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="../committee/oversight_committee.html">Section Oversight Committee</a></li>
+                    <li><a href="../committee/advisory_committee.html">Advisor Committee</a></li>
+                    <li><a href="../committee/steering_committee.html">Steering Committee</a></li>
+                    <li><a href="../committee/organizing_committee.html">Organizing Committee</a></li>
+                    <li><a href="../committee/technical_program_committee.html">Technical Program Committee</a></li>
+                    <li><a href="../committee/Session_chairs.html">Session Chairs</a></li>
+                </ul>
+            </li>
+
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">Program <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="../program/program_schedule.html">Program Schedule</a></li>
+                    <li><a href="../program/keynotes.html">Keynotes</a></li>
+                    <li><a href="../program/special_sessions.html">Special Sessions</a></li>
+                </ul>
+            </li>
+
+            <li><a href="../registration_fees.html">Registration</a></li>
+
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">Venue <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="../venue/explore_pink_city.html">Explore Pink City</a></li>
+                    <li><a href="../venue/accomodation.html">Accommodation</a></li>
+                    <li><a href="../venue/reach_to_venue.html">Reach to Venue</a></li>
+                </ul>
+            </li>
+
+            <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-footer">
+            <p>IEMECON 2027</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+
+
+<header class="hero" style="height: 50vh; min-height: 400px; background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)), url('https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;">
+        <div class="hero-content">
+            <h1 style="font-size: 3.5rem;">Advisory Committee</h1>
+            <p style="font-size: 1.25rem; color: var(--secondary); margin-top: 15px; font-weight: 600;">International and National Advisory Committees for IEMECON 2027</p>
+        </div>
+    </header>
+
+    <section style="padding: 100px 20px; max-width: 1200px; margin: 0 auto;">
+        <div class="advisory-search-panel">
+            <div class="advisory-search-box">
+                <i class="fas fa-search advisory-search-icon"></i>
+                <input type="text" id="memberSearch" class="advisory-search-input" placeholder="Search committee members by name or affiliation..." onkeyup="filterMembers()">
+                <button type="button" id="clearSearch" class="search-clear" aria-label="Clear search" onclick="clearMemberSearch()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="committee-group">
+            <h2>International Advisory Committee</h2>
+            <div class="member-grid">
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>RT</span></div>
+                    <h3 class="member-name">Rainer Tutsch</h3>
+                    <p class="member-org">Institute of Production Measurement Technology, Germany</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>SS</span></div>
+                    <h3 class="member-name">Sesha Srinivasan</h3>
+                    <p class="member-org">Florida Polytechnic University, Lakeland, Florida, USA</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>KK</span></div>
+                    <h3 class="member-name">Krishna Kumar</h3>
+                    <p class="member-org">Lund University, Sweden</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>LT</span></div>
+                    <h3 class="member-name">Lakshman S. Tamil</h3>
+                    <p class="member-org">University of Texas at Dallas, USA</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>RK</span></div>
+                    <h3 class="member-name">Ramani Kannan</h3>
+                    <p class="member-org">Universiti Teknologi PETRONAS, Malaysia</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>MS</span></div>
+                    <h3 class="member-name">M. Shamim Kaiser</h3>
+                    <p class="member-org">Jahangirnagar University, Savar, Dhaka</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>FK</span></div>
+                    <h3 class="member-name">Fumio Kodama</h3>
+                    <p class="member-org">University of Tokyo, Japan</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>BV</span></div>
+                    <h3 class="member-name">Bettina Von Stamm</h3>
+                    <p class="member-org">London Business School, UK</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>VL</span></div>
+                    <h3 class="member-name">Vasudevan Lakshminarayanan</h3>
+                    <p class="member-org">University of Waterloo, Canada</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>HR</span></div>
+                    <h3 class="member-name">Hari Reehal</h3>
+                    <p class="member-org">London South Bank University, UK</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>OY</span></div>
+                    <h3 class="member-name">Otani Yukitoshi</h3>
+                    <p class="member-org">Utsunomiya University, Japan</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>BC</span></div>
+                    <h3 class="member-name">Brian Culshaw</h3>
+                    <p class="member-org">Southampton University, UK</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>LG</span></div>
+                    <h3 class="member-name">Lalit Kumar Goel</h3>
+                    <p class="member-org">Nanyang Technological University, Singapore</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>HC</span></div>
+                    <h3 class="member-name">Hyuang suck Cho</h3>
+                    <p class="member-org">Korea Advanced Institute of Science & Technology, Korea</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>YL</span></div>
+                    <h3 class="member-name">Yu-Lung Lo</h3>
+                    <p class="member-org">National Cheng Kung University, Taiwan</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>DJ</span></div>
+                    <h3 class="member-name">Dipak C. Jain</h3>
+                    <p class="member-org">Chulalongkorn University, Bangkok, Thailand</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="committee-group">
+            <h2>National Advisory Committee</h2>
+            <div class="member-grid">
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>VK</span></div>
+                    <h3 class="member-name">Vinay Kumar</h3>
+                    <p class="member-org">MNNIT Allahabad</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>AA</span></div>
+                    <h3 class="member-name">Ashwini Kumar Arya</h3>
+                    <p class="member-org">Jawaharlal Nehru University, New Delhi</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>SY</span></div>
+                    <h3 class="member-name">Subash Chandra Yadav</h3>
+                    <p class="member-org">NIT Patna, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>UG</span></div>
+                    <h3 class="member-name">Utpal Garain</h3>
+                    <p class="member-org">Indian Statistical Institute, Kolkata</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>SL</span></div>
+                    <h3 class="member-name">Shyam Lal</h3>
+                    <p class="member-org">National Institute of Technology Karnataka, Surathkal, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>MK</span></div>
+                    <h3 class="member-name">Manjeet Kumar</h3>
+                    <p class="member-org">Delhi Technological University, Delhi</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>NK</span></div>
+                    <h3 class="member-name">Nand Kishore</h3>
+                    <p class="member-org">HBTU, Kanpur, Uttar Pradesh</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>SS</span></div>
+                    <h3 class="member-name">Sandeep Kumar Singh</h3>
+                    <p class="member-org">MNNIT Allahabad</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>PS</span></div>
+                    <h3 class="member-name">Pijus Kanti Samanta</h3>
+                    <p class="member-org">Prabhat Kumar College, Contai, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>RG</span></div>
+                    <h3 class="member-name">Rowdro Ghatak</h3>
+                    <p class="member-org">National Institute of Technology Durgapur, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>RP</span></div>
+                    <h3 class="member-name">Raghavendra Pal</h3>
+                    <p class="member-org">SVNIT, Surat, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>SY</span></div>
+                    <h3 class="member-name">Shivendra Yadav</h3>
+                    <p class="member-org">SVNIT, Surat, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>MR</span></div>
+                    <h3 class="member-name">M. R. Kanjilal</h3>
+                    <p class="member-org">Narula Institute of Technology, Kolkata, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>AK</span></div>
+                    <h3 class="member-name">Abhay Kumar</h3>
+                    <p class="member-org">Devi Ahilya Viswavidyalay, Indore, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>AG</span></div>
+                    <h3 class="member-name">Arun Gaur</h3>
+                    <p class="member-org">Malaviya National Institute of Technology, Rajasthan, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>SC</span></div>
+                    <h3 class="member-name">Subrata Chattopadhyay</h3>
+                    <p class="member-org">NITTR Kolkata, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>JM</span></div>
+                    <h3 class="member-name">Jitendra Bahadur Maurya</h3>
+                    <p class="member-org">NIT Patna, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>AK</span></div>
+                    <h3 class="member-name">Arun Kumar</h3>
+                    <p class="member-org">JECRC University, Jaipur, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>SS</span></div>
+                    <h3 class="member-name">Sajayvir Singh</h3>
+                    <p class="member-org">JIIT, Noida, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>AS</span></div>
+                    <h3 class="member-name">Amit Singh</h3>
+                    <p class="member-org">Malaviya National Institute of Technology, Rajasthan, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>SV</span></div>
+                    <h3 class="member-name">Seema Varma</h3>
+                    <p class="member-org">Banasthali Vidyapith, Jaipur, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>SM</span></div>
+                    <h3 class="member-name">Soumitra Kumar Mandal</h3>
+                    <p class="member-org">NITTR Kolkata, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>MG</span></div>
+                    <h3 class="member-name">Manish Kumar Gupta</h3>
+                    <p class="member-org">Symbiosis University, Pune, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>RM</span></div>
+                    <h3 class="member-name">R.K. Mangal</h3>
+                    <p class="member-org">JECRC, Jaipur, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>GS</span></div>
+                    <h3 class="member-name">Gunjan Soni</h3>
+                    <p class="member-org">Malaviya National Institute of Technology, Rajasthan, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>RG</span></div>
+                    <h3 class="member-name">Rajeev Gupta</h3>
+                    <p class="member-org">Rajasthan Technical University, Kota, Rajasthan, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>SM</span></div>
+                    <h3 class="member-name">Sanjeev Mishra</h3>
+                    <p class="member-org">Rajasthan University, Kota, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>VJ</span></div>
+                    <h3 class="member-name">Vijay Janyani</h3>
+                    <p class="member-org">Malaviya National Institute of Technology, Rajasthan, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>SS</span></div>
+                    <h3 class="member-name">Sumit Srivastava</h3>
+                    <p class="member-org">Manipal University, Jaipur, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>MG</span></div>
+                    <h3 class="member-name">Mridul Gupta</h3>
+                    <p class="member-org">GEHU, Dehradun, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo advisor-avatar"><span>AK</span></div>
+                    <h3 class="member-name">Ashish Kumar</h3>
+                    <p class="member-org">Manipal University, Jaipur, India</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>IEMECON 2027</h4>
+                <div class="footer-brand-card"><img src="https://lh3.googleusercontent.com/pw/AP1GczOd1R4xurxY-9gnKw_OJkBQxA-es54hu7Nq7YYan0k_IXGXLsnxVaGTREmQUl6NQUyRvpg2ZhObUTvQ2ZEPKlq9IWcls3_1d454C-FrjjMU7BJ4jPbJxyazyon8wNLcG2p02VkcrpswpNrqHwNmp6n-=w1536-h1024-s-no-gm?authuser=0" alt="IEMECON 2027" class="footer-logo-img"></div>
+                <p>International Conference on IoT in Social, Mobile, Analytics and Cloud.</p>
+                <p>Hosted by UEM Jaipur.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="../important_dates.html">Important Dates</a></li>
+                    <li><a href="../call_for_papers.html">Call for Papers</a></li>
+                    <li><a href="../submission.html">Submission Portal</a></li>
+                    <li><a href="../registration_fees.html">Registration</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>Email: contact@iemecon2027.org</p>
+                <p>UEM Jaipur Campus, Rajasthan, India</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; IEMECON 2027. Site is designed and maintained by: <a href="https://github.com/soham1304s">Soham Mondal</a> and <a href="https://github.com/Voltshreyas">Shreyas Roy</a></p>
+        </div>
+    </footer>
+
+    <script>
+        function filterMembers() {
+            const input = document.getElementById('memberSearch');
+            const filter = input.value.toLowerCase();
+            const cards = document.getElementsByClassName('member-card');
+            const clearSearch = document.getElementById('clearSearch');
+            const groups = document.getElementsByClassName('committee-group');
+            let totalVisible = 0;
+
+            for (let i = 0; i < cards.length; i++) {
+                const name = cards[i].querySelector('.member-name').innerText.toLowerCase();
+                const org = cards[i].querySelector('.member-org').innerText.toLowerCase();
+                if (name.includes(filter) || org.includes(filter)) {
+                    cards[i].style.display = "";
+                    totalVisible++;
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+
+            for (let j = 0; j < groups.length; j++) {
+                const visibleInGroup = groups[j].querySelectorAll('.member-card:not([style*="display: none"])').length;
+                groups[j].style.display = visibleInGroup > 0 ? "" : "none";
+            }
+
+            clearSearch.classList.toggle('visible', filter.length > 0);
+        }
+
+        function clearMemberSearch() {
+            const input = document.getElementById('memberSearch');
+            input.value = "";
+            filterMembers();
+            input.focus();
+        }
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+</html>
+
+
+
+
+

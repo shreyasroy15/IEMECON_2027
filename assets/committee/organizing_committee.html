@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizing Committee - IEMECON 2027</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        .organizing-hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .organizing-page {
+            position: relative;
+            padding: 90px 20px 110px;
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        .organizing-intro {
+            max-width: 780px;
+            margin: 0 auto 54px;
+            text-align: center;
+        }
+
+        .organizing-intro h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.4rem;
+            color: var(--primary);
+            margin-bottom: 14px;
+        }
+
+        .organizing-intro p {
+            color: #475569;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+            margin-bottom: 76px;
+        }
+
+        .stat-card {
+            position: relative;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            align-items: center;
+            gap: 18px;
+            padding: 26px;
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            box-shadow: 0 14px 36px rgba(10, 25, 47, 0.08);
+            overflow: hidden;
+        }
+
+        .stat-card i {
+            width: 54px;
+            height: 54px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: #fff7ed;
+            color: var(--secondary);
+            font-size: 1.35rem;
+        }
+
+        .stat-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.3rem;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .stat-card p {
+            color: #64748b;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .committee-section {
+            padding: 48px 0 58px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .section-header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 28px;
+            color: var(--primary);
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+        }
+
+        .section-header::before {
+            content: '';
+            width: 10px;
+            height: 34px;
+            border-radius: 8px;
+            background: var(--secondary);
+            flex: 0 0 auto;
+        }
+
+        .organizing-page .member-grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 0;
+        }
+
+        .organizing-page .member-card {
+            min-height: 300px;
+            padding: 32px 24px 28px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 12px 30px rgba(10, 25, 47, 0.06);
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+        }
+
+        .organizing-page .member-card::before {
+            height: 4px;
+        }
+
+        .member-img-container {
+            width: 118px;
+            height: 118px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 22px;
+            background: linear-gradient(135deg, var(--primary), #1e3a5f);
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid var(--white);
+            box-shadow: 0 14px 28px rgba(10, 25, 47, 0.16);
+            transition: var(--transition);
+        }
+
+        .organizing-page .member-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 22px 44px rgba(10, 25, 47, 0.12);
+        }
+
+        .member-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .member-img-container span {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.55rem;
+            font-weight: 800;
+            letter-spacing: 0;
+        }
+
+        .member-card:hover .member-img-container {
+            transform: scale(1.04);
+            border-color: var(--secondary);
+        }
+
+        .member-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 100%;
+            padding: 8px 12px;
+            margin-bottom: 14px;
+            border-radius: 8px;
+            background: #fff7ed;
+            color: #b45309;
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            line-height: 1.25;
+        }
+
+        .organizing-page .member-name {
+            font-size: 1.28rem;
+            margin-bottom: 10px;
+        }
+
+        .member-aff {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.55;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .industry-table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: separate;
+            border-spacing: 0;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: var(--white);
+            box-shadow: 0 12px 30px rgba(10, 25, 47, 0.06);
+        }
+
+        .industry-table th {
+            background: var(--primary);
+            color: var(--white);
+            padding: 18px 22px;
+            text-align: left;
+            font-size: 0.92rem;
+            text-transform: uppercase;
+            letter-spacing: 0;
+        }
+
+        .industry-table td {
+            padding: 18px 22px;
+            border-top: 1px solid #e2e8f0;
+            color: #334155;
+            font-weight: 600;
+        }
+
+        .industry-table tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .committee-directory {
+            padding-top: 58px;
+            margin-top: 20px;
+        }
+
+        .directory-card {
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: var(--white);
+            box-shadow: 0 16px 38px rgba(10, 25, 47, 0.08);
+        }
+
+        .directory-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .directory-table th {
+            position: sticky;
+            top: 80px;
+            z-index: 2;
+            padding: 18px 22px;
+            background: var(--primary);
+            color: var(--white);
+            text-align: left;
+            font-size: 0.92rem;
+            text-transform: uppercase;
+            letter-spacing: 0;
+        }
+
+        .directory-table td {
+            padding: 16px 22px;
+            border-top: 1px solid #e2e8f0;
+            color: #334155;
+            line-height: 1.55;
+            vertical-align: top;
+        }
+
+        .directory-table td:first-child {
+            width: 34%;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .directory-table tbody tr:not(.committee-category-row):nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .committee-category-row td {
+            background: #fff7ed;
+            color: #b45309;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            border-top: 1px solid #fed7aa;
+        }
+
+        .industry-person {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .industry-avatar {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex: 0 0 46px;
+            background: var(--primary);
+            color: var(--secondary);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.85rem;
+        }
+
+        .industry-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .organizing-page .single-member-grid {
+            display: grid;
+            grid-template-columns: minmax(250px, 350px);
+            justify-content: center;
+        }
+
+        @media (max-width: 640px) {
+            .organizing-hero {
+                min-height: 360px !important;
+            }
+
+            .organizing-hero h1 {
+                font-size: 2.45rem !important;
+            }
+
+            .organizing-page {
+                padding: 64px 16px 80px;
+            }
+
+            .organizing-intro {
+                margin-bottom: 38px;
+            }
+
+            .organizing-intro h2 {
+                font-size: 2rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                margin-bottom: 48px;
+            }
+
+            .stat-card {
+                padding: 20px;
+            }
+
+            .committee-section {
+                padding: 36px 0 44px;
+            }
+
+            .section-header {
+                align-items: flex-start;
+                font-size: 1.55rem;
+            }
+
+            .organizing-page .member-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .organizing-page .member-card {
+                min-height: auto;
+                padding: 28px 20px;
+            }
+
+            .member-img-container {
+                width: 96px;
+                height: 96px;
+            }
+
+            .industry-person {
+                align-items: flex-start;
+            }
+
+            .industry-table,
+            .industry-table thead,
+            .industry-table tbody,
+            .industry-table tr,
+            .industry-table td {
+                display: block;
+                width: 100%;
+            }
+
+            .industry-table thead {
+                display: none;
+            }
+
+            .industry-table tr {
+                padding: 16px;
+                border-top: 1px solid #e2e8f0;
+            }
+
+            .industry-table tr:first-child {
+                border-top: 0;
+            }
+
+            .industry-table td {
+                padding: 8px 0;
+                border-top: 0;
+            }
+
+            .industry-table td:nth-child(2)::before {
+                content: 'Affiliation';
+                display: block;
+                margin-bottom: 5px;
+                color: var(--secondary);
+                font-size: 0.75rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 0;
+            }
+
+            .committee-directory {
+                padding-top: 42px;
+            }
+
+            .directory-card {
+                border: 0;
+                box-shadow: none;
+                background: transparent;
+            }
+
+            .directory-table,
+            .directory-table thead,
+            .directory-table tbody,
+            .directory-table tr,
+            .directory-table td {
+                display: block;
+                width: 100%;
+            }
+
+            .directory-table thead {
+                display: none;
+            }
+
+            .directory-table tr {
+                margin-bottom: 14px;
+                overflow: hidden;
+                border: 1px solid #e2e8f0;
+                border-radius: 8px;
+                background: var(--white);
+                box-shadow: 0 10px 24px rgba(10, 25, 47, 0.06);
+            }
+
+            .directory-table td {
+                padding: 12px 16px;
+                border-top: 0;
+            }
+
+            .directory-table td:first-child {
+                width: 100%;
+                padding-bottom: 4px;
+            }
+
+            .directory-table td:nth-child(2)::before {
+                content: 'Affiliation';
+                display: block;
+                margin-bottom: 5px;
+                color: var(--secondary);
+                font-size: 0.75rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 0;
+            }
+
+            .committee-category-row {
+                box-shadow: none !important;
+            }
+
+            .committee-category-row td {
+                padding: 14px 16px;
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 980px) {
+            .stats-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .stat-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+                justify-items: center;
+            }
+        }
+
+        .organizing-page,
+        .organizing-page * {
+            box-sizing: border-box;
+        }
+
+        .organizing-page .stats-container,
+        .organizing-page .member-grid {
+            display: grid;
+            width: 100%;
+        }
+
+        .organizing-page .member-card {
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .organizing-page .member-name,
+        .organizing-page .member-aff,
+        .organizing-page .member-badge,
+        .directory-table td,
+        .industry-table td {
+            overflow-wrap: anywhere;
+            word-break: normal;
+        }
+
+        .industry-table,
+        .directory-table {
+            table-layout: fixed;
+        }
+
+        .industry-table th:first-child,
+        .industry-table td:first-child {
+            width: 42%;
+        }
+
+        .directory-table th:first-child,
+        .directory-table td:first-child {
+            width: 34%;
+        }
+
+        .committee-category-row td:first-child {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .organizing-hero {
+                min-height: 360px !important;
+                padding: 0 18px;
+            }
+
+            .organizing-hero h1 {
+                font-size: 2.35rem !important;
+            }
+
+            .organizing-hero p {
+                font-size: 1rem !important;
+            }
+
+            .organizing-page {
+                padding: 58px 15px 76px;
+            }
+
+            .organizing-page .stats-container,
+            .organizing-page .member-grid,
+            .organizing-page .single-member-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .organizing-page .member-card {
+                min-height: auto;
+            }
+
+            .industry-table,
+            .industry-table thead,
+            .industry-table tbody,
+            .industry-table tr,
+            .industry-table td,
+            .directory-table,
+            .directory-table thead,
+            .directory-table tbody,
+            .directory-table tr,
+            .directory-table td {
+                display: block;
+                width: 100% !important;
+            }
+
+            .industry-table thead,
+            .directory-table thead {
+                display: none;
+            }
+
+            .industry-table,
+            .directory-card {
+                border: 0;
+                box-shadow: none;
+                background: transparent;
+            }
+
+            .industry-table tr,
+            .directory-table tr {
+                margin-bottom: 14px;
+                padding: 14px;
+                border: 1px solid #e2e8f0;
+                border-radius: 8px;
+                background: var(--white);
+                box-shadow: 0 10px 24px rgba(10, 25, 47, 0.06);
+            }
+
+            .industry-table td,
+            .directory-table td {
+                padding: 6px 0;
+                border-top: 0;
+            }
+
+            .industry-table td:nth-child(2)::before,
+            .directory-table td:nth-child(2)::before {
+                content: 'Affiliation';
+                display: block;
+                margin-bottom: 5px;
+                color: var(--secondary);
+                font-size: 0.75rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 0;
+            }
+
+            .committee-category-row {
+                padding: 0 !important;
+                border-color: #fed7aa !important;
+                box-shadow: none !important;
+            }
+
+            .committee-category-row td {
+                padding: 13px 15px !important;
+            }
+        }
+
+        .committee-directory {
+            padding-top: 46px;
+        }
+
+        .directory-card {
+            border: 0;
+            border-radius: 12px;
+            background: var(--white);
+            box-shadow: 0 20px 48px rgba(10, 25, 47, 0.12);
+        }
+
+        .directory-intro {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            padding: 24px 26px;
+            background: linear-gradient(135deg, var(--primary), #122949);
+            color: var(--white);
+        }
+
+        .directory-intro span {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--secondary);
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            letter-spacing: 0;
+        }
+
+        .directory-intro p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.82);
+            line-height: 1.55;
+            font-weight: 500;
+        }
+
+        .directory-chips {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 10px;
+            flex: 0 0 auto;
+        }
+
+        .directory-chips span {
+            margin: 0;
+            padding: 8px 12px;
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            border-radius: 8px;
+            background: rgba(245, 158, 11, 0.12);
+            color: var(--secondary);
+            font-size: 0.76rem;
+            white-space: nowrap;
+        }
+
+        .directory-table th {
+            position: static;
+            top: auto;
+            padding: 20px 24px;
+            background: #071427;
+        }
+
+        .directory-table td {
+            padding: 17px 24px;
+        }
+
+        .directory-table tbody tr:not(.committee-category-row) {
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .directory-table tbody tr:not(.committee-category-row):hover {
+            background: #fffbeb;
+        }
+
+        .committee-category-row td {
+            padding: 16px 24px;
+            background: #fff7ed;
+            color: #92400e;
+            border-top: 1px solid #fed7aa;
+            border-bottom: 1px solid #fed7aa;
+        }
+
+        @media (max-width: 768px) {
+            .directory-card {
+                background: transparent;
+                box-shadow: none;
+            }
+
+            .directory-intro {
+                display: block;
+                padding: 22px;
+                border-radius: 12px;
+                margin-bottom: 18px;
+            }
+
+            .directory-chips {
+                justify-content: flex-start;
+                margin-top: 16px;
+            }
+
+            .directory-chips span {
+                white-space: normal;
+            }
+        }
+    </style>
+</head>
+<body>
+        <nav>
+        <a class="logo" href="../../index.html"><img src="https://lh3.googleusercontent.com/pw/AP1GczOd1R4xurxY-9gnKw_OJkBQxA-es54hu7Nq7YYan0k_IXGXLsnxVaGTREmQUl6NQUyRvpg2ZhObUTvQ2ZEPKlq9IWcls3_1d454C-FrjjMU7BJ4jPbJxyazyon8wNLcG2p02VkcrpswpNrqHwNmp6n-=w1536-h1024-s-no-gm?authuser=0" alt="IEMECON 2027 logo" class="site-logo"><img src="https://lh3.googleusercontent.com/pw/AP1GczNIygNWm3eRx9VJhpLwwxxFlS4j7PaHrRSSfmCuNcKe1yYeJXeI3P0QkRlDSLd5Qc-0wNg4gVUo7nomqT_MKhT97tAlKbhGjvPiXr6sMBPR8XOTlOYRxCGXXtZntqScUgv4o4uquf7Oar3Ebh4dPEbw=w597-h418-s-no-gm?authuser=0" alt="Secondary logo" class="site-logo"><img src="https://lh3.googleusercontent.com/pw/AP1GczNjy2upmBvXuMtpEDItIe1GVmwYo2Galz4lXj2_FFDy6F45opy9qLOit_yxdoWpGLyCFgfu6I1MJScA2fqwRhwhYGFUflMTDm66xAP75blPSdXq1Ng0sOcYjSCpuWLsBmT3D3zYMIVtbQzgeeC1bkEu=w1024-h1024-s-no-gm?authuser=0" alt="Third logo" class="site-logo"></a>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">About Us <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="../about_us.html">About</a></li>
+                    <li><a href="../gallery.html">Gallery</a></li>
+                    <li class="nested-dropdown">
+                        <a href="#">Previous Conferences <i class="fas fa-chevron-right"></i></a>
+                        <ul class="nested-content">
+                            <li><a href="../Previous_Conferences/iemecon2019.html">IEMECON 2019</a></li>
+                            <li><a href="../Previous_Conferences/iemecon2021.html">IEMECON 2021</a></li>
+                            <li><a href="../Previous_Conferences/iemecon2023.html">IEMECON 2023</a></li>
+                            <li><a href="../Previous_Conferences/iemecon2024.html">IEMECON 2024</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../sister_conference.html">Sister Conferences</a></li>
+                    <li><a href="../Contributors.html">Contributors</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Authors <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="../call_for_papers.html">Call For Papers</a></li>
+                    <li><a href="../technical_tracks.html">Technical Tracks</a></li>
+                    <li><a href="../important_dates.html">Important Dates</a></li>
+                    <li><a href="../author_guidelines.html">Author Guidelines</a></li>
+                    <li><a href="../submission.html">Submission</a></li>
+                    <li><a href="../proceedings.html">Conference Proceedings</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Committee <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="../committee/oversight_committee.html">Section Oversight Committee</a></li>
+                    <li><a href="../committee/advisory_committee.html">Advisor Committee</a></li>
+                    <li><a href="../committee/steering_committee.html">Steering Committee</a></li>
+                    <li><a href="../committee/organizing_committee.html">Organizing Committee</a></li>
+                    <li><a href="../committee/technical_program_committee.html">Technical Program Committee</a></li>
+                    <li><a href="../committee/Session_chairs.html">Session Chairs</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Program <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="../program/program_schedule.html">Program Schedule</a></li>
+                    <li><a href="../program/keynotes.html">Keynotes</a></li>
+                    <li><a href="../program/special_sessions.html">Special Sessions</a></li>
+                </ul>
+            </li>
+            <li><a href="../registration_fees.html">Registration</a></li>
+            <li class="dropdown">
+                <a href="#">Venue <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="../venue/explore_pink_city.html">Explore Pink City</a></li>
+                    <li><a href="../venue/accomodation.html">Accommodation</a></li>
+                    <li><a href="../venue/reach_to_venue.html">Reach to Venue</a></li>
+                </ul>
+            </li>
+            <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+        <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <a class="logo" href="../../index.html"><img src="https://lh3.googleusercontent.com/pw/AP1GczOd1R4xurxY-9gnKw_OJkBQxA-es54hu7Nq7YYan0k_IXGXLsnxVaGTREmQUl6NQUyRvpg2ZhObUTvQ2ZEPKlq9IWcls3_1d454C-FrjjMU7BJ4jPbJxyazyon8wNLcG2p02VkcrpswpNrqHwNmp6n-=w1536-h1024-s-no-gm?authuser=0" alt="IEMECON 2027 logo" class="site-logo"><img src="https://lh3.googleusercontent.com/pw/AP1GczNIygNWm3eRx9VJhpLwwxxFlS4j7PaHrRSSfmCuNcKe1yYeJXeI3P0QkRlDSLd5Qc-0wNg4gVUo7nomqT_MKhT97tAlKbhGjvPiXr6sMBPR8XOTlOYRxCGXXtZntqScUgv4o4uquf7Oar3Ebh4dPEbw=w597-h418-s-no-gm?authuser=0" alt="Secondary logo" class="site-logo"><img src="https://lh3.googleusercontent.com/pw/AP1GczNjy2upmBvXuMtpEDItIe1GVmwYo2Galz4lXj2_FFDy6F45opy9qLOit_yxdoWpGLyCFgfu6I1MJScA2fqwRhwhYGFUflMTDm66xAP75blPSdXq1Ng0sOcYjSCpuWLsBmT3D3zYMIVtbQzgeeC1bkEu=w1024-h1024-s-no-gm?authuser=0" alt="Third logo" class="site-logo"></a>
+            <div class="close-menu">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">About Us <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="../about_us.html">About</a></li>
+                    <li><a href="../gallery.html">Gallery</a></li>
+                    <li class="mobile-nested-dropdown">
+                        <div class="mobile-nested-title">Previous Conferences <i class="fas fa-chevron-down"></i></div>
+                        <ul class="mobile-nested-content">
+                            <li><a href="../Previous_Conferences/iemecon2019.html">IEMECON 2019</a></li>
+                            <li><a href="../Previous_Conferences/iemecon2021.html">IEMECON 2021</a></li>
+                            <li><a href="../Previous_Conferences/iemecon2023.html">IEMECON 2023</a></li>
+                            <li><a href="../Previous_Conferences/iemecon2024.html">IEMECON 2024</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../sister_conference.html">Sister Conferences</a></li>
+                    <li><a href="../Contributors.html">Contributors</a></li>
+                </ul>
+            </li>
+
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">Authors <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="../call_for_papers.html">Call For Papers</a></li>
+                    <li><a href="../technical_tracks.html">Technical Tracks</a></li>
+                    <li><a href="../important_dates.html">Important Dates</a></li>
+                    <li><a href="../author_guidelines.html">Author Guidelines</a></li>
+                    <li><a href="../submission.html">Submission</a></li>
+                    <li><a href="../proceedings.html">Conference Proceedings</a></li>
+                </ul>
+            </li>
+
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">Committee <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="../committee/oversight_committee.html">Section Oversight Committee</a></li>
+                    <li><a href="../committee/advisory_committee.html">Advisor Committee</a></li>
+                    <li><a href="../committee/steering_committee.html">Steering Committee</a></li>
+                    <li><a href="../committee/organizing_committee.html">Organizing Committee</a></li>
+                    <li><a href="../committee/technical_program_committee.html">Technical Program Committee</a></li>
+                    <li><a href="../committee/Session_chairs.html">Session Chairs</a></li>
+                </ul>
+            </li>
+
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">Program <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="../program/program_schedule.html">Program Schedule</a></li>
+                    <li><a href="../program/keynotes.html">Keynotes</a></li>
+                    <li><a href="../program/special_sessions.html">Special Sessions</a></li>
+                </ul>
+            </li>
+
+            <li><a href="../registration_fees.html">Registration</a></li>
+
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">Venue <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="../venue/explore_pink_city.html">Explore Pink City</a></li>
+                    <li><a href="../venue/accomodation.html">Accommodation</a></li>
+                    <li><a href="../venue/reach_to_venue.html">Reach to Venue</a></li>
+                </ul>
+            </li>
+
+            <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-footer">
+            <p>IEMECON 2027</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+
+
+<header class="hero organizing-hero" style="height: 45vh; min-height: 400px; background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)), url('https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;">
+        <div class="hero-content">
+            <h1 style="font-size: 3.2rem;">Organizing Committee</h1>
+            <p style="font-size: 1.2rem; color: var(--secondary); margin-top: 15px; font-weight: 600;">Leading Excellence in Conference Organization</p>
+        </div>
+    </header>
+
+    <section class="organizing-page">
+        <div class="organizing-intro">
+            <h2>Conference Leadership</h2>
+            <p>Meet the organizing team coordinating the technical program, publication, outreach, operations, and industry engagement for IEMECON 2027.</p>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card"><i class="fas fa-users"></i><div><h3>40+</h3><p>Committee Members</p></div></div>
+            <div class="stat-card"><i class="fas fa-university"></i><div><h3>15+</h3><p>Institutes</p></div></div>
+            <div class="stat-card"><i class="fas fa-earth-asia"></i><div><h3>5</h3><p>Countries</p></div></div>
+        </div>
+
+        <div class="committee-section">
+            <h2 class="section-header">Chief Patron</h2>
+            <div class="member-grid">
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Banani Chakrabarti.jpeg" alt="Banani Chakrabarti"></div>
+                    <span class="member-badge">Chief Patron</span>
+                    <h3 class="member-name">Banani Chakrabarti</h3>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Satyajit Chakrabarti.png" alt="Satyajit Chakrabarti"></div>
+                    <span class="member-badge">Chief Patron</span>
+                    <h3 class="member-name">Satyajit Chakrabarti</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="committee-section">
+            <h2 class="section-header">Patron</h2>
+            <div class="member-grid single-member-grid">
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Biswajoy Chatterjee.png" alt="Biswajoy Chatterjee"></div>
+                    <span class="member-badge">Patron</span>
+                    <h3 class="member-name">Biswajoy Chatterjee</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="committee-section">
+            <h2 class="section-header">Honorary Chairs</h2>
+            <div class="member-grid">
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Shiban K. Koul.png" alt="Shiban Koul"></div>
+                    <span class="member-badge">Honorary Chair</span>
+                    <h3 class="member-name">Shiban K. Koul</h3>
+                    <p class="member-aff">Indian Institute of Technology Delhi</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Cristiano Tomassoni.png" alt="Cristiano Tomassoni"></div>
+                    <span class="member-badge">Honorary Chair</span>
+                    <h3 class="member-name">Cristiano Tomassoni</h3>
+                    <p class="member-aff">University of Perugia</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/oversight_sneha_kabra.jpg" alt="Sneha Kabra"></div>
+                    <span class="member-badge">Honorary Chair</span>
+                    <h3 class="member-name">Sneha Kabra</h3>
+                    <p class="member-aff">Shaheed Rajguru College of Applied Sciences for Women (University of Delhi)</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/M. M. Sharma.jpeg" alt="M. M. Sharma"></div>
+                    <span class="member-badge">Honorary Chair</span>
+                    <h3 class="member-name">M. M. Sharma</h3>
+                    <p class="member-aff">MNIT Jaipur, India</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="committee-section">
+            <h2 class="section-header">General Chairs</h2>
+            <div class="member-grid">
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Mahesh P. Abegaonkar.jpeg" alt="Mahesh P. Abegaonkar"></div>
+                    <span class="member-badge">General Chair</span>
+                    <h3 class="member-name">Mahesh P. Abegaonkar</h3>
+                    <p class="member-aff">CARE, IIT Delhi</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Sitangshu Bhattacharya.jpeg" alt="Sitangshu Bhattacharya"></div>
+                    <span class="member-badge">General Chair</span>
+                    <h3 class="member-name">Sitangshu Bhattacharya</h3>
+                    <p class="member-aff">IIIT Allahabad, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Vijay Shanker Tripathi.png" alt="Vijay Shanker Tripathi"></div>
+                    <span class="member-badge">General Chair</span>
+                    <h3 class="member-name">Vijay Shanker Tripathi</h3>
+                    <p class="member-aff">Motilal Nehru National Institute of Technology Allahabad</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/S.K. Ghosh.jpeg" alt="S.K. Ghosh"></div>
+                    <span class="member-badge">General Chair</span>
+                    <h3 class="member-name">S.K. Ghosh</h3>
+                    <p class="member-aff">CSIR-CEERI, Pilani</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="committee-section">
+            <h2 class="section-header">Program Chairs</h2>
+            <div class="member-grid">
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Ratheesh K. Meleppat.png" alt="Ratheesh Kumar Meleppat"></div>
+                    <span class="member-badge">Program Chair</span>
+                    <h3 class="member-name">Ratheesh Kumar Meleppat</h3>
+                    <p class="member-aff">University of California Davis</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Ravi Kumar Gangwar.png" alt="Ravi Kumar Gangwar"></div>
+                    <span class="member-badge">Program Chair</span>
+                    <h3 class="member-name">Ravi Kumar Gangwar</h3>
+                    <p class="member-aff">Indian Institute of Technology (ISM) Dhanbad</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Soumava Mukherjee.jpeg" alt="Soumava Mukherjee"></div>
+                    <span class="member-badge">Program Chair</span>
+                    <h3 class="member-name">Soumava Mukherjee</h3>
+                    <p class="member-aff">Indian Institute of Technology, Jodhpur</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Dinesh Yadav.png" alt="Dinesh Yadav"></div>
+                    <span class="member-badge">Program Chair</span>
+                    <h3 class="member-name">Dinesh Yadav</h3>
+                    <p class="member-aff">Manipal University, Jaipur</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Krishna Kumar.jpg" alt="Krishna Kumar"></div>
+                    <span class="member-badge">Program Chair</span>
+                    <h3 class="member-name">Krishna Kumar</h3>
+                    <p class="member-aff">University of Auckland, New Zealand</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="committee-section">
+            <h2 class="section-header">Leadership</h2>
+            <div class="member-grid">
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Pradeep Kumar Sharma.png" alt="Pradeep Kumar Sharma"></div>
+                    <span class="member-badge">Finance Chair</span>
+                    <h3 class="member-name">Pradeep Kumar Sharma</h3>
+                    <p class="member-aff">University of Engineering & Management Jaipur</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Prashant Ranjan.png" alt="Prashant Ranjan"></div>
+                    <span class="member-badge">Conference Chair</span>
+                    <h3 class="member-name">Prashant Ranjan</h3>
+                    <p class="member-aff">University of Engineering & Management Jaipur</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Surajit Sur.jpg" alt="Surajit Sur"></div>
+                    <span class="member-badge">Organizing Secretary</span>
+                    <h3 class="member-name">Surajit Sur</h3>
+                    <p class="member-aff">University of Engineering & Management Jaipur</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="committee-section">
+            <h2 class="section-header">Technical Program Committee Chairs</h2>
+            <div class="member-grid">
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Rajarshi Bhattacharya.jpg" alt="Rajarshi Bhattacharya"></div>
+                    <span class="member-badge">TPC Chair</span>
+                    <h3 class="member-name">Rajarshi Bhattacharya</h3>
+                    <p class="member-aff">National Institute of Technology Patna</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Amit Mahesh Joshi.jpg" alt="Amit Mahesh Joshi"></div>
+                    <span class="member-badge">TPC Chair</span>
+                    <h3 class="member-name">Amit Mahesh Joshi</h3>
+                    <p class="member-aff">Malaviya National Institute of Technology Jaipur, India</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Uttam Narendra Thakur.jpeg" alt="Uttam Narendra Thakur"></div>
+                    <span class="member-badge">TPC Chair</span>
+                    <h3 class="member-name">Uttam Narendra Thakur</h3>
+                    <p class="member-aff">University of Engineering & Management Jaipur</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Dipta Mukherjee.jpeg" alt="Dipta Mukherjee"></div>
+                    <span class="member-badge">TPC Chair</span>
+                    <h3 class="member-name">Dipta Mukherjee</h3>
+                    <p class="member-aff">University of Engineering & Management Jaipur</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="committee-section">
+            <h2 class="section-header">Technical Program Committee Co-Chair</h2>
+            <div class="member-grid single-member-grid">
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Anjali Yadav.jpeg" alt="Anjali Yadav"></div>
+                    <span class="member-badge">TPC Co-Chair</span>
+                    <h3 class="member-name">Anjali Yadav</h3>
+                    <p class="member-aff">University of Engineering & Management Jaipur</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="committee-section">
+            <h2 class="section-header">Steering Committee</h2>
+            <div class="member-grid">
+                <div class="member-card">
+                    <div class="member-img-container"><span>AS</span></div>
+                    <span class="member-badge">Steering Member</span>
+                    <h3 class="member-name">Alok Saraswat</h3>
+                    <p class="member-aff">Central University of Rajasthan</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/steering_committee member 2.png" alt="Tarun Varma"></div>
+                    <span class="member-badge">Steering Member</span>
+                    <h3 class="member-name">Tarun Varma</h3>
+                    <p class="member-aff">Malaviya National Institute of Technology Jaipur</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/steering_committee member 3.jpeg" alt="Sanyog Rawat"></div>
+                    <span class="member-badge">Steering Member</span>
+                    <h3 class="member-name">Sanyog Rawat</h3>
+                    <p class="member-aff">Central University of Rajasthan</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/steering_committee member 4.jpg" alt="Somak Bhattacharyya"></div>
+                    <span class="member-badge">Steering Member</span>
+                    <h3 class="member-name">Somak Bhattacharyya</h3>
+                    <p class="member-aff">Indian Institute of Technology (BHU), Varanasi</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/steering_committee member 5.png" alt="Angshuman Khan"></div>
+                    <span class="member-badge">Steering Member</span>
+                    <h3 class="member-name">Angshuman Khan</h3>
+                    <p class="member-aff">University of Engineering & Management Jaipur</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/steering_committee member 6.jpg" alt="Shubhajit Pal"></div>
+                    <span class="member-badge">Steering Member</span>
+                    <h3 class="member-name">Shubhajit Pal</h3>
+                    <p class="member-aff">University of Engineering & Management Jaipur</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="committee-section">
+            <h2 class="section-header">Publication Chairs</h2>
+            <div class="member-grid">
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Rituraj Singh.jpg" alt="Rituraj Singh"></div>
+                    <span class="member-badge">Publication Chair</span>
+                    <h3 class="member-name">Rituraj Singh</h3>
+                    <p class="member-aff">Netaji Subhas University of Technology, Delhi</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Debajyoti Chatterjee.jpg" alt="Debajyoti Chatterjee"></div>
+                    <span class="member-badge">Publication Chair</span>
+                    <h3 class="member-name">Debajyoti Chatterjee</h3>
+                    <p class="member-aff">University of Engineering & Management Jaipur</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="committee-section">
+            <h2 class="section-header">Publicity & Media Chairs</h2>
+            <div class="member-grid">
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Sayak Pramanik.jpeg" alt="Sayak Pramanik"></div>
+                    <span class="member-badge">Publicity Chair</span>
+                    <h3 class="member-name">Sayak Pramanik</h3>
+                    <p class="member-aff">University of Engineering & Management Jaipur</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Santanu Basak.jpeg" alt="Santanu Basak"></div>
+                    <span class="member-badge">Publicity Chair</span>
+                    <h3 class="member-name">Santanu Basak</h3>
+                    <p class="member-aff">University of Engineering & Management Jaipur</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Prakash Choudhary.jpg" alt="Prakash Choudhary"></div>
+                    <span class="member-badge">Publicity Chair</span>
+                    <h3 class="member-name">Prakash Choudhary</h3>
+                    <p class="member-aff">Central University of Rajasthan</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Atanu Chowdhury.jpeg" alt="Atanu Chowdhury"></div>
+                    <span class="member-badge">Publicity Chair</span>
+                    <h3 class="member-name">Atanu Chowdhury</h3>
+                    <p class="member-aff">Calcutta Institute of Technology, WB</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="committee-section">
+            <h2 class="section-header">Local Arrangements Chairs</h2>
+            <div class="member-grid">
+                <div class="member-card">
+                    <div class="member-img-container"><span>KB</span></div>
+                    <span class="member-badge">Local Arrangements Chair</span>
+                    <h3 class="member-name">Kanhaiya Lal Bunkar</h3>
+                    <p class="member-aff">University of Engineering & Management Jaipur</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><span>LG</span></div>
+                    <span class="member-badge">Local Arrangements Chair</span>
+                    <h3 class="member-name">Laduram Gurjar</h3>
+                    <p class="member-aff">University of Engineering & Management Jaipur</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="committee-section">
+            <h2 class="section-header">Sponsorship & Industry Relations Chairs</h2>
+            <div class="member-grid">
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Mahesh Kala.jpeg" alt="Mahesh Kala"></div>
+                    <span class="member-badge">Sponsorship Chair</span>
+                    <h3 class="member-name">Mahesh Kala</h3>
+                    <p class="member-aff">JVMicronics Pvt. Ltd.</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Sikta Mandal.jpg" alt="Sikta Mandal"></div>
+                    <span class="member-badge">Sponsorship Chair</span>
+                    <h3 class="member-name">Sikta Mandal</h3>
+                    <p class="member-aff">University of Engineering & Management, Jaipur</p>
+                </div>
+            </div>
+            
+            <table class="industry-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Affiliation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><div class="industry-person"><span class="industry-avatar"><img src="../images/Mithlesh Kumar.png" alt="Mithlesh Kumar"></span><span>Mithlesh Kumar</span></div></td>
+                        <td>Flusso Limited, England, UK</td>
+                    </tr>
+                    <tr>
+                        <td><div class="industry-person"><span class="industry-avatar">SM</span><span>Suman Kumar Mitra</span></div></td>
+                        <td>Quest Global</td>
+                    </tr>
+                    <tr>
+                        <td><div class="industry-person"><span class="industry-avatar">HK</span><span>Harish Kumar</span></div></td>
+                        <td>Wapcos Limited</td>
+                    </tr>
+                    <tr>
+                        <td><div class="industry-person"><span class="industry-avatar">VV</span><span>Vikrant Varshney</span></div></td>
+                        <td>Synopsis India Pvt. Ltd.</td>
+                    </tr>
+                    <tr>
+                        <td><div class="industry-person"><span class="industry-avatar">VS</span><span>Vipin Kumar Singh</span></div></td>
+                        <td>L&T</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="committee-section">
+            <h2 class="section-header">Registration Chair</h2>
+            <div class="member-grid single-member-grid">
+                <div class="member-card">
+                    <div class="member-img-container"><img src="../images/Sourav Chakraborty.jpg" alt="Sourav Chakraborty"></div>
+                    <span class="member-badge">Registration Chair</span>
+                    <h3 class="member-name">Sourav Chakraborty</h3>
+                    <p class="member-aff">University of Engineering & Management Jaipur</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="committee-section committee-directory">
+            <h2 class="section-header">Advisory &amp; Technical Program Committees</h2>
+            <div class="directory-card">
+                <div class="directory-intro">
+                    <div>
+                        <span>Committee Directory</span>
+                        <p>Browse advisory members and technical program committee members in one organized, searchable-by-eye directory.</p>
+                    </div>
+                    <div class="directory-chips">
+                        <span>International Advisory</span>
+                        <span>National Advisory</span>
+                        <span>TPC Members</span>
+                    </div>
+                </div>
+                <table class="directory-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Affiliation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="committee-category-row"><td colspan="2">International Advisory Committee</td></tr>
+                        <tr><td>Sourav Kumar Mukhopadhyay</td><td>Augusta University, Georgia, USA</td></tr>
+                        <tr><td>Sesha Srinivasan</td><td>Florida Polytechnic University, Lakeland, Florida, USA</td></tr>
+                        <tr><td>Lakshman S. Tamil</td><td>University of Texas at Dallas, USA</td></tr>
+                        <tr><td>M. Shamim Kaiser</td><td>Jahangirnagar University, Savar, Dhaka</td></tr>
+                        <tr><td>Ramani Kannan</td><td>Universiti Teknologi PETRONAS, Malaysia</td></tr>
+                        <tr><td>Fumio Kodama</td><td>University of Tokyo, Japan</td></tr>
+                        <tr><td>Bettina Von Stamm</td><td>London Business School, UK</td></tr>
+                        <tr><td>Hari Reehal</td><td>London South Bank University, UK</td></tr>
+                        <tr><td>Vasudevan Lakshminarayanan</td><td>University of Waterloo, Canada</td></tr>
+                        <tr><td>Otani Yukitoshi</td><td>Utsunomiya University, Japan</td></tr>
+                        <tr><td>Brian Culshaw</td><td>Southampton University, UK</td></tr>
+                        <tr><td>Rainer Tutsch</td><td>Institute of Production Measurement Technology, Germany</td></tr>
+                        <tr><td>Hyuang suck Cho</td><td>Korea Advance Institute of Science &amp; Technology, Korea</td></tr>
+                        <tr><td>Yu-Lung Lo</td><td>National Cheng Kung University, Taiwan</td></tr>
+                        <tr><td>Dipak C. Jain</td><td>Chulalongkorn University, Bangkok, Thailand</td></tr>
+                        <tr><td>Lalit Kumar Goel</td><td>Nanyang Technological University, Singapore</td></tr>
+
+                        <tr class="committee-category-row"><td colspan="2">National Advisory Committee</td></tr>
+                        <tr><td>Ashwini Kumar Arya</td><td>Jawaharlal Nehru University, New Delhi</td></tr>
+                        <tr><td>M. M Sharma</td><td>MNIT Jaipur, India</td></tr>
+                        <tr><td>Taimoor Khan</td><td>NIT Silchar, India</td></tr>
+                        <tr><td>Sitangshu Bhattacharya</td><td>IIIT Allahabad, India</td></tr>
+                        <tr><td>Arvind Kumar</td><td>Motilal Nehru National Institute of Technology Allahabad, Prayagraj</td></tr>
+                        <tr><td>Manjeet Kumar</td><td>DTU Delhi</td></tr>
+                        <tr><td>Chandra Prakash</td><td>NIT, Kurukshetra, India</td></tr>
+                        <tr><td>Utpal Garain</td><td>Indian Statistical Institute, Kolkata</td></tr>
+                        <tr><td>Shyam Lal</td><td>National Institute of Technology Surathkal, India</td></tr>
+                        <tr><td>Nand Kishore</td><td>HBTU, Kanpur, Uttar Pradesh</td></tr>
+                        <tr><td>Vinay Kumar</td><td>MNNIT Allahabad</td></tr>
+                        <tr><td>Sandeep Kumar Singh</td><td>MNNIT Allahabad</td></tr>
+                        <tr><td>Subash Chandra Yadav</td><td>NIT Patna, India</td></tr>
+                        <tr><td>Rowdro Ghatak</td><td>National Institute of Technology Durgapur, India</td></tr>
+                        <tr><td>Subrata Chattopadhyay</td><td>National Institute of Technical Teachers' Training and Research, Kolkata, India</td></tr>
+                        <tr><td>Jitendra Bahadur Maurya</td><td>NIT Patna, India</td></tr>
+                        <tr><td>Soumitra Kumar Mandal</td><td>National Institute of Technical Teachers' Training &amp; Research, Kolkata, India</td></tr>
+                        <tr><td>Manish Kumar Gupta</td><td>Symbiosis University, Pune, India</td></tr>
+                        <tr><td>Rajeev Gupta</td><td>Rajasthan Technical University, Kota, Rajasthan, India</td></tr>
+                        <tr><td>Sanjeev Mishra</td><td>Rajasthan University, Kota, India</td></tr>
+                        <tr><td>Vijay Janyani</td><td>Malaviya National Institute of Technology, Rajasthan, India</td></tr>
+                        <tr><td>Seemanti Saha</td><td>NIT Patna</td></tr>
+
+                        <tr class="committee-category-row"><td colspan="2">Technical Program Committee Members</td></tr>
+                        <tr><td>A. P. Singh</td><td>Central University of Rajasthan, India</td></tr>
+                        <tr><td>Aaditeshwar Seth</td><td>IIT Delhi, India</td></tr>
+                        <tr><td>Alok Kumar Baranwal</td><td>NIT Manipur</td></tr>
+                        <tr><td>Abdul Gafur Shaik</td><td>IIT Jodhpur, India</td></tr>
+                        <tr><td>Abdulla Al-Badi</td><td>Sultan Qaboos University, Oman</td></tr>
+                        <tr><td>Abhay Sharma</td><td>GEHU, Dehradun, India</td></tr>
+                        <tr><td>Anoop Chawla</td><td>IIT Delhi, India</td></tr>
+                        <tr><td>Anshul Kumar</td><td>IIT Delhi, India</td></tr>
+                        <tr><td>Ashish Mathur</td><td>IIT Jodhpur, India</td></tr>
+                        <tr><td>Ashok Kaushal</td><td>Concordia University, Canada</td></tr>
+                        <tr><td>Abheek Gupta</td><td>University of Engineering and Management Jaipur</td></tr>
+                        <tr><td>Bahni Ray</td><td>IIT Delhi, India</td></tr>
+                        <tr><td>Bardella Paolo</td><td>Politecnico di Torino, Italy</td></tr>
+                        <tr><td>D. Mondal</td><td>National Institute of Technology Durgapur, India</td></tr>
+                        <tr><td>Debabrata Dasgupta</td><td>IIT Delhi, India</td></tr>
+                        <tr><td>Erjong manee</td><td>Kasetsart University, Thailand</td></tr>
+                        <tr><td>G.S.Taki</td><td>Institute of Engineering and Management, India</td></tr>
+                        <tr><td>Ganapati Panda</td><td>IIT, Bhubaneswar, Orissa, India</td></tr>
+                        <tr><td>H. R. Vishwakarma</td><td>VIT University, Vellore, India</td></tr>
+                        <tr><td>Hari Krishna Kuruva</td><td>DIT School of Engineering, India</td></tr>
+                        <tr><td>Indrasen Singh</td><td>VIT Vellore, India</td></tr>
+                        <tr><td>Jan Huissoon</td><td>University of Waterloo, Canada</td></tr>
+                        <tr><td>K. P. Ghatak</td><td>Institute of Engineering and Management, India</td></tr>
+                        <tr><td>Kamran Behdinan</td><td>University of Toronto, Canada</td></tr>
+                        <tr><td>Lipo Wang</td><td>Nanyang Technological University, Singapore</td></tr>
+                        <tr><td>Malay Gangopadhyaya</td><td>Institute of Engineering and Management, India</td></tr>
+                        <tr><td>M. Ravi Shankar</td><td>IIT Guwahati, India</td></tr>
+                        <tr><td>M. S. Prasad Babu</td><td>Andhra University, Visakhapatnam, India</td></tr>
+                        <tr><td>Madan Gupta</td><td>University of Saskatchewan, Canada</td></tr>
+                        <tr><td>Mahesh Kumar</td><td>IIT Jodhpur, India</td></tr>
+                        <tr><td>Nico F. Declercq</td><td>Georgia Institute of Technology, U.S.A</td></tr>
+                        <tr><td>P. M.Khiller</td><td>NIT, Rourkela, Orissa, India</td></tr>
+                        <tr><td>Prabhat Singh</td><td>IIIT Manipur</td></tr>
+                        <tr><td>Ram S. Sharma</td><td>IIT-BHU, India</td></tr>
+                        <tr><td>Ratna Chakrabarty</td><td>Institute of Engineering and Management, India</td></tr>
+                        <tr><td>S. K. Ghorai</td><td>BIT, Mesra, Ranchi, Jharkhand, India</td></tr>
+                        <tr><td>S. Pandey</td><td>University of Delhi, Delhi, India</td></tr>
+                        <tr><td>Sandeep Vyas</td><td>JECRC Jaipur, India</td></tr>
+                        <tr><td>Samrat Saha</td><td>University of Engineering and Management Jaipur</td></tr>
+                        <tr><td>Sangjukta Das</td><td>Bennett University</td></tr>
+                        <tr><td>Suman Samui</td><td>NIT Durgapur</td></tr>
+                        <tr><td>Sumit Kundu</td><td>NIT Durgapur, Higher Administrative Grade, HAG</td></tr>
+                        <tr><td>Soumya Sen</td><td>University of Engineering and Management Jaipur</td></tr>
+                        <tr><td>Tahir I. Khan</td><td>Qatar University, Qatar</td></tr>
+                        <tr><td>Vinay Joseph Ribeiro</td><td>IIT Delhi, India</td></tr>
+                        <tr><td>Vinod Shukla</td><td>Amity University, Dubai</td></tr>
+                        <tr><td>Wang Xin</td><td>Monash University, Canada</td></tr>
+                        <tr><td>Xudong Zhao</td><td>Dalian University of Technology, China</td></tr>
+                        <tr><td>Yang Jiaqiang</td><td>Zhejiang University, China</td></tr>
+                        <tr><td>Yanxia Sun</td><td>University of Johannesburg, South Africa</td></tr>
+                        <tr><td>Zhe Zhang</td><td>Technical University of Denmark, Denmark</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+        <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>IEMECON 2027</h4>
+                <div class="footer-brand-card"><img src="https://lh3.googleusercontent.com/pw/AP1GczOd1R4xurxY-9gnKw_OJkBQxA-es54hu7Nq7YYan0k_IXGXLsnxVaGTREmQUl6NQUyRvpg2ZhObUTvQ2ZEPKlq9IWcls3_1d454C-FrjjMU7BJ4jPbJxyazyon8wNLcG2p02VkcrpswpNrqHwNmp6n-=w1536-h1024-s-no-gm?authuser=0" alt="IEMECON 2027" class="footer-logo-img"></div>
+                <p>International Conference on IoT in Social, Mobile, Analytics and Cloud.</p>
+                <p>Hosted by UEM Jaipur.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="../important_dates.html">Important Dates</a></li>
+                    <li><a href="../call_for_papers.html">Call for Papers</a></li>
+                    <li><a href="../submission.html">Submission Portal</a></li>
+                    <li><a href="../registration_fees.html">Registration</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>Email: contact@iemecon2027.org</p>
+                <p>UEM Jaipur Campus, Rajasthan, India</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; IEMECON 2027. Site is designed and maintained by: <a href="https://github.com/soham1304s">Soham Mondal</a> and <a href="https://github.com/Voltshreyas">Shreyas Roy</a></p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
+
+
+
+
+

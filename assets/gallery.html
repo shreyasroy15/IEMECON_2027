@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - IEMECON 2027</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        :root {
+            --bg-deep: #020617;
+            --bg-card: #0f172a;
+            --accent: #f59e0b;
+            --accent-glow: rgba(245, 158, 11, 0.4);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --glass: rgba(15, 23, 42, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(245, 158, 11, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(245, 158, 11, 0.05) 0%, transparent 40%);
+            color: var(--text-main);
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* Particles Background */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        /* Hero Section */
+        .premium-hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(60px);
+            opacity: 0.5;
+        }
+
+        .premium-hero h1 {
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 20px;
+            background: linear-gradient(to bottom, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: -4px;
+        }
+
+        .premium-hero p {
+            font-size: 1.5rem;
+            color: var(--text-dim);
+            max-width: 700px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Floating Nav Bar */
+        .filter-nav {
+            position: sticky;
+            top: 100px;
+            z-index: 1000;
+            padding: 20px 0;
+            margin-bottom: 80px;
+        }
+
+        .filter-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            padding: 10px;
+            border-radius: 100px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .filter-pill {
+            padding: 12px 30px;
+            border-radius: 100px;
+            border: none;
+            background: transparent;
+            color: var(--text-dim);
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .filter-pill:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .filter-pill.active {
+            background: var(--accent);
+            color: var(--bg-deep);
+            box-shadow: 0 0 30px var(--accent-glow);
+        }
+
+        /* Dynamic Masonry 2.0 */
+        .dynamic-gallery {
+            max-width: 1600px;
+            margin: 0 auto 150px;
+            padding: 0 40px;
+            column-count: 3;
+            column-gap: 40px;
+        }
+
+        @media (max-width: 1200px) { .dynamic-gallery { column-count: 2; } }
+        @media (max-width: 768px) { .dynamic-gallery { column-count: 1; padding: 0 20px; } }
+
+        .gallery-card {
+            break-inside: avoid;
+            margin-bottom: 40px;
+            position: relative;
+            border-radius: 40px;
+            overflow: hidden;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(100px) scale(0.9);
+        }
+
+        .gallery-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at var(--x) var(--y), var(--accent-glow) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--accent);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 20px var(--accent-glow);
+        }
+
+        .gallery-card:hover::before { opacity: 1; }
+
+        .card-img-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 40px;
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.1) rotate(1deg);
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(2, 6, 23, 0.9), transparent);
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+
+        .gallery-card:hover .card-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-overlay h3 {
+            font-size: 1.4rem;
+            font-family: 'Outfit', sans-serif;
+            margin-bottom: 5px;
+            color: var(--accent);
+        }
+
+        .card-overlay p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .year-badge {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: var(--accent);
+            color: var(--bg-deep);
+            padding: 6px 18px;
+            border-radius: 100px;
+            font-weight: 900;
+            font-size: 0.8rem;
+            z-index: 3;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Premium Lightbox */
+        .premium-lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 6, 23, 0.98);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .premium-lightbox.active { display: flex; opacity: 1; }
+
+        .lb-wrap {
+            max-width: 90vw;
+            max-height: 85vh;
+            position: relative;
+            transform: perspective(2000px) rotateX(10deg);
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .premium-lightbox.active .lb-wrap { transform: perspective(2000px) rotateX(0deg); }
+
+        .lb-img {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+        }
+
+        .lb-close {
+            position: absolute;
+            top: -60px;
+            right: 0;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .lb-close:hover { color: var(--accent); transform: rotate(90deg); }
+
+        .lb-nav {
+            position: absolute;
+            top: 50%;
+            width: 110%;
+            left: -5%;
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+        }
+
+        .lb-btn {
+            width: 70px;
+            height: 70px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            pointer-events: auto;
+            transition: 0.3s;
+        }
+
+        .lb-btn:hover { background: var(--accent); color: var(--bg-deep); transform: scale(1.1); }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--bg-card); border-radius: 10px; border: 2px solid var(--bg-deep); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a class="logo" href="../index.html"><img
+                src="https://lh3.googleusercontent.com/pw/AP1GczOd1R4xurxY-9gnKw_OJkBQxA-es54hu7Nq7YYan0k_IXGXLsnxVaGTREmQUl6NQUyRvpg2ZhObUTvQ2ZEPKlq9IWcls3_1d454C-FrjjMU7BJ4jPbJxyazyon8wNLcG2p02VkcrpswpNrqHwNmp6n-=w1536-h1024-s-no-gm?authuser=0"
+                alt="IEMECON 2027 logo" class="site-logo"><img
+                src="https://lh3.googleusercontent.com/pw/AP1GczNIygNWm3eRx9VJhpLwwxxFlS4j7PaHrRSSfmCuNcKe1yYeJXeI3P0QkRlDSLd5Qc-0wNg4gVUo7nomqT_MKhT97tAlKbhGjvPiXr6sMBPR8XOTlOYRxCGXXtZntqScUgv4o4uquf7Oar3Ebh4dPEbw=w597-h418-s-no-gm?authuser=0"
+                alt="Secondary logo" class="site-logo"><img
+                src="https://lh3.googleusercontent.com/pw/AP1GczNjy2upmBvXuMtpEDItIe1GVmwYo2Galz4lXj2_FFDy6F45opy9qLOit_yxdoWpGLyCFgfu6I1MJScA2fqwRhwhYGFUflMTDm66xAP75blPSdXq1Ng0sOcYjSCpuWLsBmT3D3zYMIVtbQzgeeC1bkEu=w1024-h1024-s-no-gm?authuser=0"
+                alt="Third logo" class="site-logo"></a>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">About Us <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="about_us.html">About</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li class="nested-dropdown">
+                        <a href="#">Previous Conferences <i class="fas fa-chevron-right"></i></a>
+                        <ul class="nested-content">
+                            <li><a href="Previous_Conferences/iemecon2019.html">IEMECON 2019</a></li>
+                            <li><a href="Previous_Conferences/iemecon2021.html">IEMECON 2021</a></li>
+                            <li><a href="Previous_Conferences/iemecon2023.html">IEMECON 2023</a></li>
+                            <li><a href="Previous_Conferences/iemecon2024.html">IEMECON 2024</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="sister_conference.html">Sister Conferences</a></li>
+                    <li><a href="Contributors.html">Contributors</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Authors <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="call_for_papers.html">Call For Papers</a></li>
+                    <li><a href="technical_tracks.html">Technical Tracks</a></li>
+                    <li><a href="important_dates.html">Important Dates</a></li>
+                    <li><a href="author_guidelines.html">Author Guidelines</a></li>
+                    <li><a href="submission.html">Submission</a></li>
+                    <li><a href="proceedings.html">Conference Proceedings</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Committee <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="committee/oversight_committee.html">Section Oversight Committee</a></li>
+                    <li><a href="committee/advisory_committee.html">Advisor Committee</a></li>
+                    <li><a href="committee/steering_committee.html">Steering Committee</a></li>
+                    <li><a href="committee/organizing_committee.html">Organizing Committee</a></li>
+                    <li><a href="committee/technical_program_committee.html">Technical Program Committee</a></li>
+                    <li><a href="committee/Session_chairs.html">Session Chairs</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Program <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="program/program_schedule.html">Program Schedule</a></li>
+                    <li><a href="program/keynotes.html">Keynotes</a></li>
+                    <li><a href="program/special_sessions.html">Special Sessions</a></li>
+                </ul>
+            </li>
+            <li><a href="registration_fees.html">Registration</a></li>
+            <li class="dropdown">
+                <a href="#">Venue <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="venue/explore_pink_city.html">Explore Pink City</a></li>
+                    <li><a href="venue/accomodation.html">Accommodation</a></li>
+                    <li><a href="venue/reach_to_venue.html">Reach to Venue</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <canvas id="particles-canvas"></canvas>
+
+    <header class="premium-hero">
+        <div class="hero-glow"></div>
+        <h1>Gallery<br><span style="color: var(--accent);">Legacy</span></h1>
+        <p>Capturing a decade of research excellence</p>
+    </header>
+
+    <div class="filter-nav">
+        <div class="filter-container">
+            <button class="filter-pill active" data-year="all">All Sessions</button>
+            <button class="filter-pill" data-year="2024">2024</button>
+            <button class="filter-pill" data-year="2023">2023</button>
+            <button class="filter-pill" data-year="2021">2021</button>
+            <button class="filter-pill" data-year="2019">2019</button>
+        </div>
+    </div>
+
+    <div class="dynamic-gallery" id="mainGrid">
+        <!-- 2024 -->
+        <div class="gallery-card" data-year="2024">
+            <span class="year-badge">2024</span>
+            <div class="card-img-wrapper"><img src="images/slider1.jpg" alt="IEMECON"></div>
+            <div class="card-overlay">
+                <h3>Technical Keynote</h3>
+                <p>RIC Jaipur</p>
+            </div>
+        </div>
+        <div class="gallery-card" data-year="2024">
+            <span class="year-badge">2024</span>
+            <div class="card-img-wrapper"><img src="images/slider2.jpg" alt="IEMECON"></div>
+            <div class="card-overlay">
+                <h3>Global Networking</h3>
+                <p>Innovative Collaborations</p>
+            </div>
+        </div>
+        <div class="gallery-card" data-year="2024">
+            <span class="year-badge">2025</span>
+            <div class="card-img-wrapper"><img src="https://lh3.googleusercontent.com/pw/AP1GczPBiY2v55o19MhPFnitESBtx5uBfeVHtqbdepF3-YN9AoEMZuA07HIzhlKhA0zff8nYRxGpJfSbLHJXFfNkG4F8XhyFoRmufA2U0bJI9Fm8Msd12lZTOMa-1vVa438EmM4dk3yEYgM8W7VGJWLUXAc2=w1600-h1066-s-no-gm?authuser=0" alt="IEMECON"></div>
+            <div class="card-overlay">
+                <h3>Organizing Team</h3>
+                <p>Success Celebrations</p>
+            </div>
+        </div>
+        <div class="gallery-card" data-year="2024">
+            <span class="year-badge">2024</span>
+            <div class="card-img-wrapper"><img src="images/slider3.jpg" alt="IEMECON"></div>
+            <div class="card-overlay">
+                <h3>Future of IoT</h3>
+                <p>Conference Sessions</p>
+            </div>
+        </div>
+
+        <!-- 2023 -->
+        <div class="gallery-card" data-year="2023">
+            <span class="year-badge">2025</span>
+            <div class="card-img-wrapper"><img src="https://lh3.googleusercontent.com/pw/AP1GczNW3dbUTPEw23d8iqATkk5gBFo7vJeWucviXpz_sagdyGwGi4rQhwXyGcjMzMatuIsv9PVHM_n3mB4MCU-bP6ogL0Vh45SoJnrwtkBPBP0g29RulWD2RRJT9sY0O0Sx3i3DQ15Nt5Vg6OMQolbQpAnZ=w1600-h1066-s-no-gm?authuser=0" alt="IEMECON"></div>
+            <div class="card-overlay">
+                <h3>Inaugural Ceremony</h3>
+                <p>UEM Jaipur Campus</p>
+            </div>
+        </div>
+        <div class="gallery-card" data-year="2025">
+            <span class="year-badge">2023</span>
+            <div class="card-img-wrapper"><img src="https://lh3.googleusercontent.com/pw/AP1GczOMtRiGwCbnQuPjSiUX-i17j8MCeA8rSkeLywBqvZtazH4tzu7UmHJQNHC1k87XmuptkslDJ-jIKDhmVGPLUi_1caL_wm34FGbCq3sSOepN544_23C9-LtOThx58DhNmb7L22clR_1Zk7aqc3rhZ19T=w1600-h1066-s-no-gm?authuser=0" alt="IEMECON"></div>
+            <div class="card-overlay">
+                <h3>Academic Excellence</h3>
+                <p>Paper Awards</p>
+            </div>
+        </div>
+        <div class="gallery-card" data-year="2023">
+            <span class="year-badge">2023</span>
+            <div class="card-img-wrapper"><img src="https://lh3.googleusercontent.com/pw/AP1GczO-U_F0LI3snjYSTxWpwoXvdGHLtpB0gmKHNYyn1IgVtqxf1pDWt5E9C8ygFVWmwr6AY-YCXV2hYOswvch1XqvUwU1uqvo0fWLv4TaIuxCSatil29H5Rm9fc_vcW94HC2USfwqCG5MamlcaAU6KuNei=w1600-h1066-s-no-gm?authuser=0" alt="IEMECON"></div>
+            <div class="card-overlay">
+                <h3>Embedded Systems</h3>
+                <p>Parallel Tracks</p>
+            </div>
+        </div>
+        <div class="gallery-card" data-year="2023">
+            <span class="year-badge">2023</span>
+            <div class="card-img-wrapper"><img src="images/index 1.jpg" alt="IEMECON"></div>
+            <div class="card-overlay">
+                <h3>Campus Ambience</h3>
+                <p>UEM Jaipur</p>
+            </div>
+        </div>
+
+        <!-- 2021 -->
+        <div class="gallery-card" data-year="2021">
+            <span class="year-badge">2021</span>
+            <div class="card-img-wrapper"><img src="images/index 2.jpg" alt="IEMECON"></div>
+            <div class="card-overlay">
+                <h3>Virtual Summit</h3>
+                <p>Connecting Globally</p>
+            </div>
+        </div>
+
+        <!-- 2019 -->
+        <div class="gallery-card" data-year="2019">
+            <span class="year-badge">2019</span>
+            <div class="card-img-wrapper"><img src="images/Albert Hall Musuem.jpeg" alt="IEMECON"></div>
+            <div class="card-overlay">
+                <h3>Jaipur Heritage</h3>
+                <p>Cultural Tour</p>
+            </div>
+        </div>
+        <div class="gallery-card" data-year="2019">
+            <span class="year-badge">2019</span>
+            <div class="card-img-wrapper"><img src="images/Amber Fort.webp" alt="IEMECON"></div>
+            <div class="card-overlay">
+                <h3>Pink City Landmarks</h3>
+                <p>Historical Venues</p>
+            </div>
+        </div>
+        <div class="gallery-card" data-year="2019">
+            <span class="year-badge">2019</span>
+            <div class="card-img-wrapper"><img src="images/Hawa Mahal.jpg" alt="IEMECON"></div>
+            <div class="card-overlay">
+                <h3>City Panorama</h3>
+                <p>Legacy Sessions</p>
+            </div>
+        </div>
+        <div class="gallery-card" data-year="2019">
+            <span class="year-badge">2019</span>
+            <div class="card-img-wrapper"><img src="images/Nahargar Fort.jpg" alt="IEMECON"></div>
+            <div class="card-overlay">
+                <h3>Legacy Beginnings</h3>
+                <p>IEMECON Founding</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Premium Lightbox -->
+    <div class="premium-lightbox" id="plb">
+        <div class="lb-close" id="plbClose"><i class="fas fa-times"></i></div>
+        <div class="lb-nav">
+            <div class="lb-btn" id="plbPrev"><i class="fas fa-chevron-left"></i></div>
+            <div class="lb-btn" id="plbNext"><i class="fas fa-chevron-right"></i></div>
+        </div>
+        <div class="lb-wrap">
+            <img src="" alt="" class="lb-img" id="plbImg">
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>IEMECON 2027</h4>
+                <div class="footer-brand-card"><img src="https://lh3.googleusercontent.com/pw/AP1GczOd1R4xurxY-9gnKw_OJkBQxA-es54hu7Nq7YYan0k_IXGXLsnxVaGTREmQUl6NQUyRvpg2ZhObUTvQ2ZEPKlq9IWcls3_1d454C-FrjjMU7BJ4jPbJxyazyon8wNLcG2p02VkcrpswpNrqHwNmp6n-=w1536-h1024-s-no-gm?authuser=0" alt="IEMECON 2027" class="footer-logo-img"></div>
+                <p>International Conference on IoT in Social, Mobile, Analytics and Cloud.</p>
+                <p>Hosted by UEM Jaipur.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="important_dates.html">Important Dates</a></li>
+                    <li><a href="call_for_papers.html">Call for Papers</a></li>
+                    <li><a href="submission.html">Submission Portal</a></li>
+                    <li><a href="registration_fees.html">Registration</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; IEMECON 2027. Site is designed and maintained by: <a href="https://github.com/soham1304s">Soham Mondal</a> and <a href="https://github.com/Voltshreyas">Shreyas Roy</a></p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.gallery-card');
+            const pills = document.querySelectorAll('.filter-pill');
+            
+            // 1. Particle Canvas Logic
+            const canvas = document.getElementById('particles-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            
+            function initParticles() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                particles = [];
+                for(let i=0; i<60; i++) {
+                    particles.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        size: Math.random() * 2 + 1,
+                        speedX: (Math.random() - 0.5) * 0.5,
+                        speedY: (Math.random() - 0.5) * 0.5
+                    });
+                }
+            }
+            
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#f59e0b';
+                particles.forEach(p => {
+                    p.x += p.speedX;
+                    p.y += p.speedY;
+                    if(p.x > canvas.width) p.x = 0;
+                    if(p.x < 0) p.x = canvas.width;
+                    if(p.y > canvas.height) p.y = 0;
+                    if(p.y < 0) p.y = canvas.height;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                requestAnimationFrame(animateParticles);
+            }
+            
+            initParticles();
+            animateParticles();
+            window.onresize = initParticles;
+
+            // 2. Entry Animations
+            anime({
+                targets: '.gallery-card',
+                opacity: [0, 1],
+                translateY: [100, 0],
+                scale: [0.9, 1],
+                delay: anime.stagger(100),
+                duration: 1200,
+                easing: 'easeOutQuart'
+            });
+
+            // 3. Hover Glow Positioning
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--x', `${x}px`);
+                    card.style.setProperty('--y', `${y}px`);
+                });
+            });
+
+            // 4. Filtering Logic
+            pills.forEach(pill => {
+                pill.addEventListener('click', () => {
+                    pills.forEach(p => p.classList.remove('active'));
+                    pill.classList.add('active');
+                    
+                    const year = pill.dataset.year;
+                    const targets = [];
+                    
+                    cards.forEach(card => {
+                        if(year === 'all' || card.dataset.year === year) {
+                            card.style.display = 'block';
+                            targets.push(card);
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                    
+                    anime({
+                        targets: targets,
+                        opacity: [0, 1],
+                        scale: [0.9, 1],
+                        translateY: [20, 0],
+                        delay: anime.stagger(50),
+                        duration: 800,
+                        easing: 'easeOutCubic'
+                    });
+                });
+            });
+
+            // 5. Lightbox Logic
+            const plb = document.getElementById('plb');
+            const plbImg = document.getElementById('plbImg');
+            let visibleImages = [];
+            let currentIndex = 0;
+
+            function updateVisibleImages() {
+                visibleImages = Array.from(document.querySelectorAll('.gallery-card'))
+                    .filter(c => c.style.display !== 'none')
+                    .map(c => c.querySelector('img').src);
+            }
+
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    updateVisibleImages();
+                    const src = card.querySelector('img').src;
+                    currentIndex = visibleImages.indexOf(src);
+                    plbImg.src = visibleImages[currentIndex];
+                    plb.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            document.getElementById('plbClose').onclick = () => {
+                plb.classList.remove('active');
+                document.body.style.overflow = '';
+            };
+
+            document.getElementById('plbNext').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex + 1) % visibleImages.length;
+                plbImg.src = visibleImages[currentIndex];
+            };
+
+            document.getElementById('plbPrev').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex - 1 + visibleImages.length) % visibleImages.length;
+                plbImg.src = visibleImages[currentIndex];
+            };
+
+            plb.onclick = (e) => {
+                if(e.target === plb) document.getElementById('plbClose').click();
+            };
+        });
+    </script>
+</body>
+
+</html>

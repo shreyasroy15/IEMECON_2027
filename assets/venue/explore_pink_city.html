@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Jaipur - IEMECON 2027</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        .jaipur-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .jaipur-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .jaipur-intro h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .jaipur-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .attraction-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .attraction-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .attraction-content {
+            padding: 30px;
+        }
+
+        .attraction-content h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .attraction-content p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .category-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .category-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            display: inline-block;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .category-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            transform: translateX(-50%);
+        }
+
+        .culture-banner {
+            background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.9)), url('https://images.unsplash.com/photo-1599661046289-e31897846e41?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            color: var(--white);
+            padding: 100px 40px;
+            border-radius: 30px;
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .shopping-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .shopping-list li {
+            background: #f8fafc;
+            padding: 15px 20px;
+            border-radius: 12px;
+            color: var(--primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .shopping-list li i {
+            color: var(--secondary);
+        }
+
+        .tips-card {
+            background: #fffbeb;
+            border-left: 6px solid var(--secondary);
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 60px;
+        }
+
+        .tips-card h3 {
+            color: #92400e;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .tips-list {
+            padding-left: 20px;
+            color: #92400e;
+        }
+
+        .tips-list li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .cta-box {
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-back:hover {
+            background: var(--secondary);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+        <nav>
+        <a class="logo" href="../../index.html"><img src="https://lh3.googleusercontent.com/pw/AP1GczOd1R4xurxY-9gnKw_OJkBQxA-es54hu7Nq7YYan0k_IXGXLsnxVaGTREmQUl6NQUyRvpg2ZhObUTvQ2ZEPKlq9IWcls3_1d454C-FrjjMU7BJ4jPbJxyazyon8wNLcG2p02VkcrpswpNrqHwNmp6n-=w1536-h1024-s-no-gm?authuser=0" alt="IEMECON 2027 logo" class="site-logo"><img src="https://lh3.googleusercontent.com/pw/AP1GczNIygNWm3eRx9VJhpLwwxxFlS4j7PaHrRSSfmCuNcKe1yYeJXeI3P0QkRlDSLd5Qc-0wNg4gVUo7nomqT_MKhT97tAlKbhGjvPiXr6sMBPR8XOTlOYRxCGXXtZntqScUgv4o4uquf7Oar3Ebh4dPEbw=w597-h418-s-no-gm?authuser=0" alt="Secondary logo" class="site-logo"><img src="https://lh3.googleusercontent.com/pw/AP1GczNjy2upmBvXuMtpEDItIe1GVmwYo2Galz4lXj2_FFDy6F45opy9qLOit_yxdoWpGLyCFgfu6I1MJScA2fqwRhwhYGFUflMTDm66xAP75blPSdXq1Ng0sOcYjSCpuWLsBmT3D3zYMIVtbQzgeeC1bkEu=w1024-h1024-s-no-gm?authuser=0" alt="Third logo" class="site-logo"></a>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">About Us <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="../about_us.html">About</a></li>
+                    <li><a href="../gallery.html">Gallery</a></li>
+                    <li class="nested-dropdown">
+                        <a href="#">Previous Conferences <i class="fas fa-chevron-right"></i></a>
+                        <ul class="nested-content">
+                            <li><a href="../Previous_Conferences/iemecon2019.html">IEMECON 2019</a></li>
+                            <li><a href="../Previous_Conferences/iemecon2021.html">IEMECON 2021</a></li>
+                            <li><a href="../Previous_Conferences/iemecon2023.html">IEMECON 2023</a></li>
+                            <li><a href="../Previous_Conferences/iemecon2024.html">IEMECON 2024</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../sister_conference.html">Sister Conferences</a></li>
+                    <li><a href="../Contributors.html">Contributors</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Authors <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="../call_for_papers.html">Call For Papers</a></li>
+                    <li><a href="../technical_tracks.html">Technical Tracks</a></li>
+                    <li><a href="../important_dates.html">Important Dates</a></li>
+                    <li><a href="../author_guidelines.html">Author Guidelines</a></li>
+                    <li><a href="../submission.html">Submission</a></li>
+                    <li><a href="../proceedings.html">Conference Proceedings</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Committee <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="../committee/oversight_committee.html">Section Oversight Committee</a></li>
+                    <li><a href="../committee/advisory_committee.html">Advisor Committee</a></li>
+                    <li><a href="../committee/steering_committee.html">Steering Committee</a></li>
+                    <li><a href="../committee/organizing_committee.html">Organizing Committee</a></li>
+                    <li><a href="../committee/technical_program_committee.html">Technical Program Committee</a></li>
+                    <li><a href="../committee/Session_chairs.html">Session Chairs</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Program <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="../program/program_schedule.html">Program Schedule</a></li>
+                    <li><a href="../program/keynotes.html">Keynotes</a></li>
+                    <li><a href="../program/special_sessions.html">Special Sessions</a></li>
+                </ul>
+            </li>
+            <li><a href="../registration_fees.html">Registration</a></li>
+            <li class="dropdown">
+                <a href="#">Venue <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="../venue/explore_pink_city.html">Explore Pink City</a></li>
+                    <li><a href="../venue/accomodation.html">Accommodation</a></li>
+                    <li><a href="../venue/reach_to_venue.html">Reach to Venue</a></li>
+                </ul>
+            </li>
+            <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+        <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <a class="logo" href="../../index.html"><img src="https://lh3.googleusercontent.com/pw/AP1GczOd1R4xurxY-9gnKw_OJkBQxA-es54hu7Nq7YYan0k_IXGXLsnxVaGTREmQUl6NQUyRvpg2ZhObUTvQ2ZEPKlq9IWcls3_1d454C-FrjjMU7BJ4jPbJxyazyon8wNLcG2p02VkcrpswpNrqHwNmp6n-=w1536-h1024-s-no-gm?authuser=0" alt="IEMECON 2027 logo" class="site-logo"><img src="https://lh3.googleusercontent.com/pw/AP1GczNIygNWm3eRx9VJhpLwwxxFlS4j7PaHrRSSfmCuNcKe1yYeJXeI3P0QkRlDSLd5Qc-0wNg4gVUo7nomqT_MKhT97tAlKbhGjvPiXr6sMBPR8XOTlOYRxCGXXtZntqScUgv4o4uquf7Oar3Ebh4dPEbw=w597-h418-s-no-gm?authuser=0" alt="Secondary logo" class="site-logo"><img src="https://lh3.googleusercontent.com/pw/AP1GczNjy2upmBvXuMtpEDItIe1GVmwYo2Galz4lXj2_FFDy6F45opy9qLOit_yxdoWpGLyCFgfu6I1MJScA2fqwRhwhYGFUflMTDm66xAP75blPSdXq1Ng0sOcYjSCpuWLsBmT3D3zYMIVtbQzgeeC1bkEu=w1024-h1024-s-no-gm?authuser=0" alt="Third logo" class="site-logo"></a>
+            <div class="close-menu">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">About Us <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="../about_us.html">About</a></li>
+                    <li><a href="../gallery.html">Gallery</a></li>
+                    <li class="mobile-nested-dropdown">
+                        <div class="mobile-nested-title">Previous Conferences <i class="fas fa-chevron-down"></i></div>
+                        <ul class="mobile-nested-content">
+                            <li><a href="../Previous_Conferences/iemecon2019.html">IEMECON 2019</a></li>
+                            <li><a href="../Previous_Conferences/iemecon2021.html">IEMECON 2021</a></li>
+                            <li><a href="../Previous_Conferences/iemecon2023.html">IEMECON 2023</a></li>
+                            <li><a href="../Previous_Conferences/iemecon2024.html">IEMECON 2024</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../sister_conference.html">Sister Conferences</a></li>
+                    <li><a href="../Contributors.html">Contributors</a></li>
+                </ul>
+            </li>
+
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">Authors <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="../call_for_papers.html">Call For Papers</a></li>
+                    <li><a href="../technical_tracks.html">Technical Tracks</a></li>
+                    <li><a href="../important_dates.html">Important Dates</a></li>
+                    <li><a href="../author_guidelines.html">Author Guidelines</a></li>
+                    <li><a href="../submission.html">Submission</a></li>
+                    <li><a href="../proceedings.html">Conference Proceedings</a></li>
+                </ul>
+            </li>
+
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">Committee <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="../committee/oversight_committee.html">Section Oversight Committee</a></li>
+                    <li><a href="../committee/advisory_committee.html">Advisor Committee</a></li>
+                    <li><a href="../committee/steering_committee.html">Steering Committee</a></li>
+                    <li><a href="../committee/organizing_committee.html">Organizing Committee</a></li>
+                    <li><a href="../committee/technical_program_committee.html">Technical Program Committee</a></li>
+                    <li><a href="../committee/Session_chairs.html">Session Chairs</a></li>
+                </ul>
+            </li>
+
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">Program <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="../program/program_schedule.html">Program Schedule</a></li>
+                    <li><a href="../program/keynotes.html">Keynotes</a></li>
+                    <li><a href="../program/special_sessions.html">Special Sessions</a></li>
+                </ul>
+            </li>
+
+            <li><a href="../registration_fees.html">Registration</a></li>
+
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">Venue <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="../venue/explore_pink_city.html">Explore Pink City</a></li>
+                    <li><a href="../venue/accomodation.html">Accommodation</a></li>
+                    <li><a href="../venue/reach_to_venue.html">Reach to Venue</a></li>
+                </ul>
+            </li>
+
+            <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-footer">
+            <p>IEMECON 2027</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <header class="hero" style="height: 60vh; min-height: 500px; background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.7)), url('https://images.unsplash.com/photo-1599661046289-e31897846e41?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;">
+        <div class="hero-content">
+            <h1 style="font-size: 4rem;">Explore Pink City Jaipur</h1>
+            <p style="font-size: 1.4rem; color: var(--secondary); margin-top: 15px; font-weight: 600;">Unveiling the Charm, Heritage and Royalty of Jaipur</p>
+        </div>
+    </header>
+
+    <div class="jaipur-section">
+        <div class="jaipur-intro">
+            <h2>Welcome to Jaipur</h2>
+            <p>Welcome to Jaipur, the enthralling capital city of Rajasthan, India, known for its rich history, vibrant culture, and stunning architecture. Jaipur, often referred to as the "Pink City," stands as a testament to the grandeur of the Rajput era. This bustling city offers a perfect blend of historical marvels, cultural experiences, and modern attractions, making it a must-visit destination.</p>
+        </div>
+
+        <div class="category-title">
+            <h2>Historical Marvels</h2>
+        </div>
+
+        <div class="jaipur-grid">
+            <div class="attraction-card">
+                <div class="attraction-img" style="background-image: url('../images/Amber%20Fort.webp');"></div>
+                <div class="attraction-content">
+                    <h3>Amber Fort</h3>
+                    <p>An architectural masterpiece with its impressive palaces, courtyards, and stunning views of Maota Lake. Marvel at the intricate design and royal grandeur of this iconic fortress.</p>
+                </div>
+            </div>
+            <div class="attraction-card">
+                <div class="attraction-img" style="background-image: url('../images/City\ Palace.jpeg');"></div>
+                <div class="attraction-content">
+                    <h3>City Palace</h3>
+                    <p>A royal residence with museums displaying artifacts and royal costumes. Experience the blend of Mughal and Rajasthani architecture in this magnificent palace complex.</p>
+                </div>
+            </div>
+            <div class="attraction-card">
+                <div class="attraction-img" style="background-image: url('../images/Hawa\ Mahal.jpg');"></div>
+                <div class="attraction-content">
+                    <h3>Hawa Mahal</h3>
+                    <p>The iconic Palace of Winds, an epitome of Rajputana architecture with 953 small windows. Capture its distinctive pink-colored facade and unique honeycomb design.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="culture-banner">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Cultural Immersion Experience</h2>
+            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">Immerse yourself in the vibrant Rajasthani culture by witnessing captivating folk dances, melodious folk music, and engaging puppet shows that tell stories of the region's rich heritage.</p>
+            <div style="margin-top: 40px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                <div style="text-align: center;"><i class="fas fa-music" style="font-size: 2.5rem; color: var(--secondary);"></i><p style="margin-top: 10px;">Folk Music</p></div>
+                <div style="text-align: center;"><i class="fas fa-drum" style="font-size: 2.5rem; color: var(--secondary);"></i><p style="margin-top: 10px;">Traditional Dance</p></div>
+                <div style="text-align: center;"><i class="fas fa-utensils" style="font-size: 2.5rem; color: var(--secondary);"></i><p style="margin-top: 10px;">Chokhi Dhani</p></div>
+            </div>
+        </div>
+
+        <div class="category-title">
+            <h2>Shopping Extravaganza</h2>
+        </div>
+
+        <div class="jaipur-grid">
+            <div class="attraction-card">
+                <div class="attraction-img" style="background-image: url('../images/Johari\ Bazaar.webp');"></div>
+                <div class="attraction-content">
+                    <h3>Johari Bazaar</h3>
+                    <p>Known for its dazzling collection of gemstones, jewelry, and precious ornaments. Explore the colorful stalls and discover authentic pieces of Rajasthani craftsmanship.</p>
+                </div>
+            </div>
+            <div class="attraction-card">
+                <div class="attraction-content" style="padding-top: 0;">
+                    <p>Jaipur is renowned for its bustling markets and vibrant bazaars. Discover exquisite handicrafts and traditional treasures:</p>
+                    <ul class="shopping-list">
+                        <li><i class="fas fa-check-circle"></i> Block-printed textiles</li>
+                        <li><i class="fas fa-check-circle"></i> Hand-crafted pottery</li>
+                        <li><i class="fas fa-check-circle"></i> Exquisite jewelry</li>
+                        <li><i class="fas fa-check-circle"></i> Wooden artifacts</li>
+                        <li><i class="fas fa-check-circle"></i> Brassware items</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-title">
+            <h2>Culinary Delights</h2>
+        </div>
+
+        <div class="jaipur-grid">
+            <div class="attraction-card">
+                <div class="attraction-content">
+                    <h3>Dal Baati Churma</h3>
+                    <p>A savory lentil curry with baked wheat balls served with ghee. This signature Rajasthani dish is a must-try when visiting Jaipur.</p>
+                </div>
+            </div>
+            <div class="attraction-card">
+                <div class="attraction-content">
+                    <h3>Ghewar & Sweets</h3>
+                    <p>The mouth-watering Ghewar, a traditional dessert made with maida and ghee. Explore Jaipur's famous sweet shops for authentic confectioneries.</p>
+                </div>
+            </div>
+            <div class="attraction-card">
+                <div class="attraction-content">
+                    <h3>Kulhad Chai</h3>
+                    <p>Tea served in clay cups for an authentic flavor experience. Sip this traditional beverage while enjoying the bustling streets of Jaipur.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-title">
+            <h2>Modern Attractions</h2>
+        </div>
+
+        <div class="jaipur-grid">
+            <div class="attraction-card">
+                <div class="attraction-img" style="background-image: url('../images/Albert\ Hall\ Musuem.jpeg');"></div>
+                <div class="attraction-content">
+                    <h3>Albert Hall Museum</h3>
+                    <p>An architectural gem showcasing a diverse collection of artifacts, artworks, and historical pieces. A perfect blend of art, history, and architecture.</p>
+                </div>
+            </div>
+            <div class="attraction-card">
+                <div class="attraction-img" style="background-image: url('../images/Nahargar\ Fort.jpg');"></div>
+                <div class="attraction-content">
+                    <h3>Nahargarh Fort</h3>
+                    <p>Capture panoramic views of Jaipur from this towering fortress. Located on the Aravalli Hills, it offers stunning sunset views and historical insights.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tips-card">
+            <h3><i class="fas fa-lightbulb"></i> Plan Your Jaipur Journey</h3>
+            <ul class="tips-list">
+                <li>Visit historical landmarks during early morning hours to avoid crowds</li>
+                <li>Explore local markets and bazaars for authentic shopping experiences</li>
+                <li>Taste authentic Rajasthani cuisine at both restaurants and street food stalls</li>
+                <li>Engage with local artisans to understand traditional craftsmanship</li>
+                <li>Respect local customs and traditions while exploring cultural sites</li>
+            </ul>
+        </div>
+
+        <div class="cta-box">
+            <p style="font-size: 1.2rem; color: #64748b; margin-bottom: 30px;">Since you're visiting Jaipur for IEMECON 2027, make the most of your time here!</p>
+            <a href="../../index.html" class="btn-back"><i class="fas fa-home"></i> Back to IEMECON</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>IEMECON 2027</h4>
+                <div class="footer-brand-card"><img src="https://lh3.googleusercontent.com/pw/AP1GczOd1R4xurxY-9gnKw_OJkBQxA-es54hu7Nq7YYan0k_IXGXLsnxVaGTREmQUl6NQUyRvpg2ZhObUTvQ2ZEPKlq9IWcls3_1d454C-FrjjMU7BJ4jPbJxyazyon8wNLcG2p02VkcrpswpNrqHwNmp6n-=w1536-h1024-s-no-gm?authuser=0" alt="IEMECON 2027" class="footer-logo-img"></div>
+                <p>International Conference on IoT in Social, Mobile, Analytics and Cloud.</p>
+                <p>Hosted by UEM Jaipur.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="../important_dates.html">Important Dates</a></li>
+                    <li><a href="../call_for_papers.html">Call for Papers</a></li>
+                    <li><a href="../submission.html">Submission Portal</a></li>
+                    <li><a href="../registration_fees.html">Registration</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>Email: contact@iemecon2027.org</p>
+                <p>UEM Jaipur Campus, Rajasthan, India</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; IEMECON 2027. Site is designed and maintained by: <a href="https://github.com/soham1304s">Soham Mondal</a> and <a href="https://github.com/Voltshreyas">Shreyas Roy</a></p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            anime({
+                targets: '.attraction-card',
+                translateY: [30, 0],
+                opacity: [0, 1],
+                delay: anime.stagger(150),
+                easing: 'easeOutQuart',
+                duration: 1000
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+

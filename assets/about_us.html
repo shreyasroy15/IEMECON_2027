@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - IEMECON 2027</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        :root {
+            --card-bg: #ffffff;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --accent-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        body {
+            background: #f8fafc;
+            color: var(--primary);
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.4));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .elevated-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .elevated-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-item {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .highlight-item {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .section-title h2 {
+            color: var(--primary);
+            font-size: 3rem;
+            letter-spacing: -1px;
+        }
+
+        .timeline-year {
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .highlight-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--accent-gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: white;
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.2);
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 120px;
+        }
+
+        @media (max-width: 992px) {
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+        <nav>
+        <a class="logo" href="../index.html"><img src="https://lh3.googleusercontent.com/pw/AP1GczOd1R4xurxY-9gnKw_OJkBQxA-es54hu7Nq7YYan0k_IXGXLsnxVaGTREmQUl6NQUyRvpg2ZhObUTvQ2ZEPKlq9IWcls3_1d454C-FrjjMU7BJ4jPbJxyazyon8wNLcG2p02VkcrpswpNrqHwNmp6n-=w1536-h1024-s-no-gm?authuser=0" alt="IEMECON 2027 logo" class="site-logo"><img src="https://lh3.googleusercontent.com/pw/AP1GczNIygNWm3eRx9VJhpLwwxxFlS4j7PaHrRSSfmCuNcKe1yYeJXeI3P0QkRlDSLd5Qc-0wNg4gVUo7nomqT_MKhT97tAlKbhGjvPiXr6sMBPR8XOTlOYRxCGXXtZntqScUgv4o4uquf7Oar3Ebh4dPEbw=w597-h418-s-no-gm?authuser=0" alt="Secondary logo" class="site-logo"><img src="https://lh3.googleusercontent.com/pw/AP1GczNjy2upmBvXuMtpEDItIe1GVmwYo2Galz4lXj2_FFDy6F45opy9qLOit_yxdoWpGLyCFgfu6I1MJScA2fqwRhwhYGFUflMTDm66xAP75blPSdXq1Ng0sOcYjSCpuWLsBmT3D3zYMIVtbQzgeeC1bkEu=w1024-h1024-s-no-gm?authuser=0" alt="Third logo" class="site-logo"></a>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">About Us <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="about_us.html">About</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li class="nested-dropdown">
+                        <a href="#">Previous Conferences <i class="fas fa-chevron-right"></i></a>
+                        <ul class="nested-content">
+                            <li><a href="Previous_Conferences/iemecon2019.html">IEMECON 2019</a></li>
+                            <li><a href="Previous_Conferences/iemecon2021.html">IEMECON 2021</a></li>
+                            <li><a href="Previous_Conferences/iemecon2023.html">IEMECON 2023</a></li>
+                            <li><a href="Previous_Conferences/iemecon2024.html">IEMECON 2024</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="sister_conference.html">Sister Conferences</a></li>
+                    <li><a href="Contributors.html">Contributors</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Authors <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="call_for_papers.html">Call For Papers</a></li>
+                    <li><a href="technical_tracks.html">Technical Tracks</a></li>
+                    <li><a href="important_dates.html">Important Dates</a></li>
+                    <li><a href="author_guidelines.html">Author Guidelines</a></li>
+                    <li><a href="submission.html">Submission</a></li>
+                    <li><a href="proceedings.html">Conference Proceedings</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Committee <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="committee/oversight_committee.html">Section Oversight Committee</a></li>
+                    <li><a href="committee/advisory_committee.html">Advisor Committee</a></li>
+                    <li><a href="committee/steering_committee.html">Steering Committee</a></li>
+                    <li><a href="committee/organizing_committee.html">Organizing Committee</a></li>
+                    <li><a href="committee/technical_program_committee.html">Technical Program Committee</a></li>
+                    <li><a href="committee/Session_chairs.html">Session Chairs</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Program <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="program/program_schedule.html">Program Schedule</a></li>
+                    <li><a href="program/keynotes.html">Keynotes</a></li>
+                    <li><a href="program/special_sessions.html">Special Sessions</a></li>
+                </ul>
+            </li>
+            <li><a href="registration_fees.html">Registration</a></li>
+            <li class="dropdown">
+                <a href="#">Venue <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="venue/explore_pink_city.html">Explore Pink City</a></li>
+                    <li><a href="venue/accomodation.html">Accommodation</a></li>
+                    <li><a href="venue/reach_to_venue.html">Reach to Venue</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+        <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <a class="logo" href="../index.html"><img src="https://lh3.googleusercontent.com/pw/AP1GczOd1R4xurxY-9gnKw_OJkBQxA-es54hu7Nq7YYan0k_IXGXLsnxVaGTREmQUl6NQUyRvpg2ZhObUTvQ2ZEPKlq9IWcls3_1d454C-FrjjMU7BJ4jPbJxyazyon8wNLcG2p02VkcrpswpNrqHwNmp6n-=w1536-h1024-s-no-gm?authuser=0" alt="IEMECON 2027 logo" class="site-logo"><img src="https://lh3.googleusercontent.com/pw/AP1GczNIygNWm3eRx9VJhpLwwxxFlS4j7PaHrRSSfmCuNcKe1yYeJXeI3P0QkRlDSLd5Qc-0wNg4gVUo7nomqT_MKhT97tAlKbhGjvPiXr6sMBPR8XOTlOYRxCGXXtZntqScUgv4o4uquf7Oar3Ebh4dPEbw=w597-h418-s-no-gm?authuser=0" alt="Secondary logo" class="site-logo"><img src="https://lh3.googleusercontent.com/pw/AP1GczNjy2upmBvXuMtpEDItIe1GVmwYo2Galz4lXj2_FFDy6F45opy9qLOit_yxdoWpGLyCFgfu6I1MJScA2fqwRhwhYGFUflMTDm66xAP75blPSdXq1Ng0sOcYjSCpuWLsBmT3D3zYMIVtbQzgeeC1bkEu=w1024-h1024-s-no-gm?authuser=0" alt="Third logo" class="site-logo"></a>
+            <div class="close-menu">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="../index.html">Home</a></li>
+            
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">About Us <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="about_us.html">About</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li class="mobile-nested-dropdown">
+                        <div class="mobile-nested-title">Previous Conferences <i class="fas fa-chevron-down"></i></div>
+                        <ul class="mobile-nested-content">
+                            <li><a href="Previous_Conferences/iemecon2019.html">IEMECON 2019</a></li>
+                            <li><a href="Previous_Conferences/iemecon2021.html">IEMECON 2021</a></li>
+                            <li><a href="Previous_Conferences/iemecon2023.html">IEMECON 2023</a></li>
+                            <li><a href="Previous_Conferences/iemecon2024.html">IEMECON 2024</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="sister_conference.html">Sister Conferences</a></li>
+                    <li><a href="Contributors.html">Contributors</a></li>
+                </ul>
+            </li>
+
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">Authors <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="call_for_papers.html">Call For Papers</a></li>
+                    <li><a href="technical_tracks.html">Technical Tracks</a></li>
+                    <li><a href="important_dates.html">Important Dates</a></li>
+                    <li><a href="author_guidelines.html">Author Guidelines</a></li>
+                    <li><a href="submission.html">Submission</a></li>
+                    <li><a href="proceedings.html">Conference Proceedings</a></li>
+                </ul>
+            </li>
+
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">Committee <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="committee/oversight_committee.html">Section Oversight Committee</a></li>
+                    <li><a href="committee/advisory_committee.html">Advisor Committee</a></li>
+                    <li><a href="committee/steering_committee.html">Steering Committee</a></li>
+                    <li><a href="committee/organizing_committee.html">Organizing Committee</a></li>
+                    <li><a href="committee/technical_program_committee.html">Technical Program Committee</a></li>
+                    <li><a href="committee/Session_chairs.html">Session Chairs</a></li>
+                </ul>
+            </li>
+
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">Program <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="program/program_schedule.html">Program Schedule</a></li>
+                    <li><a href="program/keynotes.html">Keynotes</a></li>
+                    <li><a href="program/special_sessions.html">Special Sessions</a></li>
+                </ul>
+            </li>
+
+            <li><a href="registration_fees.html">Registration</a></li>
+
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">Venue <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="venue/explore_pink_city.html">Explore Pink City</a></li>
+                    <li><a href="venue/accomodation.html">Accommodation</a></li>
+                    <li><a href="venue/reach_to_venue.html">Reach to Venue</a></li>
+                </ul>
+            </li>
+
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-footer">
+            <p>IEMECON 2027</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+
+
+<header class="hero"
+        style="height: 50vh; min-height: 400px; background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)), url('https://images.unsplash.com/photo-1599661046289-e31887846eac?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;">
+        <div class="hero-content">
+            <h1 style="font-size: 3.5rem;">IEMECON 2027</h1>
+            <p style="font-size: 1.2rem; color: var(--secondary); margin-top: 10px;">14th International Conference on
+                Intelligent Embedded, MicroElectronics, Communication and Optical Networks</p>
+            <p style="margin-top: 20px; font-weight: 600;"><i class="fas fa-calendar-alt"></i> February 4th-6th, 2027 |
+                <i class="fas fa-map-marker-alt"></i> Jaipur, Rajasthan, India
+            </p>
+        </div>
+    </header>
+
+    <section id="about" style="background: #f8fafc;">
+        <div class="section-title">
+            <h2>Welcome to IEMECON 2027</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="welcome-wrapper" style="margin-bottom: 100px;">
+            <div class="elevated-card welcome-text" style="width: 100%;">
+                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--primary);">It is our great pleasure to
+                    welcome you to the vibrant and historic city of Jaipur, Rajasthan, for the <strong>14th
+                        International Conference on Intelligent Embedded, MicroElectronics, Communication and Optical
+                        Networks (IEMECON 2027)</strong>. Hosted by the University of Engineering and Management (UEM),
+                    Jaipur, this prestigious gathering bridges the domains of intelligent systems and sustainable
+                    innovation.</p>
+                <p style="margin-top: 20px; font-size: 1.1rem; opacity: 0.8; color: var(--primary);">With the
+                    overarching theme <em>"Advancements of Artificial Intelligence in Embedded Systems,"</em> we aim to
+                    foster global collaborations that drive the digital world of tomorrow.</p>
+            </div>
+        </div>
+
+        <div class="section-title">
+            <h2>Legacy and Growth</h2>
+            <div class="underline"></div>
+        </div>
+
+        <div class="timeline-container" style="max-width: 1100px; margin: 0 auto 100px; display: grid; gap: 30px;">
+            <div class="elevated-card timeline-item">
+                <div class="timeline-year">2019</div>
+                <p><strong>Birla Auditorium, Jaipur</strong></p>
+                <p style="opacity: 0.7;">Setting the standard with frontier discussions on IoT and smart systems.</p>
+            </div>
+            <div class="elevated-card timeline-item">
+                <div class="timeline-year">2021</div>
+                <p><strong>Virtual Resilience</strong></p>
+                <p style="opacity: 0.7;">Thought-provoking sessions on AI security and cyber-physical systems during
+                    global shifts.</p>
+            </div>
+            <div class="elevated-card timeline-item">
+                <div class="timeline-year">2023</div>
+                <p><strong>UEM Jaipur Campus</strong></p>
+                <p style="opacity: 0.7;">Focusing on edge computing and AI-integrated circuits with massive industry
+                    participation.</p>
+            </div>
+            <div class="elevated-card timeline-item">
+                <div class="timeline-year">2024</div>
+                <p><strong>RIC Jaipur</strong></p>
+                <p style="opacity: 0.7;">Breaking records with international keynotes and subject matter tutorials.</p>
+            </div>
+            <div class="elevated-card timeline-item">
+                <div class="timeline-year">2025</div>
+                <p><strong>Academic Excellence</strong></p>
+                <p style="opacity: 0.7;">Received 950+ papers with a competitive 16% acceptance ratio, setting a new
+                    benchmark.</p>
+            </div>
+            <div class="elevated-card timeline-item" style="border-left: 5px solid var(--secondary);">
+                <div class="timeline-year">2027</div>
+                <p><strong>The Future of Innovation</strong></p>
+                <p style="opacity: 0.9;">Anticipated global participation from government, industry, and research
+                    leaders worldwide.</p>
+            </div>
+        </div>
+
+        <div class="section-title">
+            <h2>Conference Highlights</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="info-grid">
+            <div class="elevated-card highlight-item">
+                <div class="highlight-icon"><i class="fas fa-microchip"></i></div>
+                <h4>Technical Sessions</h4>
+                <p style="opacity: 0.7;">Across multiple parallel tracks covering AI in embedded systems, optical networks, 5G/6G, microwave engineering, VLSI design, and intelligent signal processing.</p>
+            </div>
+            <div class="elevated-card highlight-item">
+                <div class="highlight-icon"><i class="fas fa-microphone-alt"></i></div>
+                <h4>Keynote Addresses</h4>
+                <p style="opacity: 0.7;">From globally renowned experts in academia, industry, and policy-making bodies.</p>
+            </div>
+            <div class="elevated-card highlight-item">
+                <div class="highlight-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                <h4>Invited Sessions & Tutorials</h4>
+                <p style="opacity: 0.7;">On frontier topics delivered by subject matter leaders from premier institutions and global corporations.</p>
+            </div>
+            <div class="elevated-card highlight-item">
+                <div class="highlight-icon"><i class="fas fa-trophy"></i></div>
+                <h4>Best Paper Award</h4>
+                <p style="opacity: 0.7;">Recognition of outstanding research contributions presented at the conference.</p>
+            </div>
+            <div class="elevated-card highlight-item">
+                <div class="highlight-icon"><i class="fas fa-handshake"></i></div>
+                <h4>IEEE AP-S & MTT-S Meet</h4>
+                <p style="opacity: 0.7;">Chapter Chair Meet (Rajasthan Sub-Section) for academia-industry convergence.</p>
+            </div>
+            <div class="elevated-card highlight-item">
+                <div class="highlight-icon"><i class="fas fa-lightbulb"></i></div>
+                <h4>Innovation Showcases</h4>
+                <p style="opacity: 0.7;">Dedicated sessions to promote cutting-edge technology demonstrations and exhibitions.</p>
+            </div>
+        </div>
+
+        <div class="section-title">
+            <h2>Experience Jaipur</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="elevated-card" style="margin-bottom: 60px; text-align: center; padding: 40px; max-width: 1000px; margin-left: auto; margin-right: auto;">
+            <p style="font-size: 1.2rem; line-height: 1.8; color: var(--primary);">Jaipur, the capital of Rajasthan and a UNESCO World Heritage City, offers an extraordinary blend of tradition and modernity. From the majestic forts of Amer and Nahargarh, the astronomical marvel of Jantar Mantar, to the opulent City Palace, the city exudes architectural grandeur and regal history. Known for its handicrafts, gemstone markets, and vibrant bazaars, Jaipur is also home to a rich culinary legacy.</p>
+        </div>
+        <div class="info-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+            <div class="elevated-card highlight-item" style="padding: 30px; text-align: center;">
+                <div class="highlight-icon" style="margin: 0 auto 20px;"><i class="fas fa-fort-awesome"></i></div>
+                <h4 style="color: var(--primary); margin-bottom: 15px;">Heritage Tours</h4>
+                <p style="opacity: 0.7; font-size: 0.95rem;">Iconic palaces and forts including Amer Fort, City Palace, and Nahargarh Fort</p>
+            </div>
+            <div class="elevated-card highlight-item" style="padding: 30px; text-align: center;">
+                <div class="highlight-icon" style="margin: 0 auto 20px;"><i class="fas fa-paint-brush"></i></div>
+                <h4 style="color: var(--primary); margin-bottom: 15px;">Art & Crafts</h4>
+                <p style="opacity: 0.7; font-size: 0.95rem;">Local art exhibitions and authentic shopping experiences in vibrant bazaars</p>
+            </div>
+            <div class="elevated-card highlight-item" style="padding: 30px; text-align: center;">
+                <div class="highlight-icon" style="margin: 0 auto 20px;"><i class="fas fa-theater-masks"></i></div>
+                <h4 style="color: var(--primary); margin-bottom: 15px;">Cultural Evening</h4>
+                <p style="opacity: 0.7; font-size: 0.95rem;">Rajasthan's traditional dance and music including Ghoomar, Kalbelia, and Kathputli puppet shows</p>
+            </div>
+            <div class="elevated-card highlight-item" style="padding: 30px; text-align: center;">
+                <div class="highlight-icon" style="margin: 0 auto 20px;"><i class="fas fa-utensils"></i></div>
+                <h4 style="color: var(--primary); margin-bottom: 15px;">Culinary Delights</h4>
+                <p style="opacity: 0.7; font-size: 0.95rem;">Authentic Rajasthani cuisine: Dal Baati Churma, Laal Maas, and Ghewar desserts</p>
+            </div>
+        </div>
+    </section>
+
+    </div>
+
+        <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>IEMECON 2027</h4>
+                <div class="footer-brand-card"><img src="https://lh3.googleusercontent.com/pw/AP1GczOd1R4xurxY-9gnKw_OJkBQxA-es54hu7Nq7YYan0k_IXGXLsnxVaGTREmQUl6NQUyRvpg2ZhObUTvQ2ZEPKlq9IWcls3_1d454C-FrjjMU7BJ4jPbJxyazyon8wNLcG2p02VkcrpswpNrqHwNmp6n-=w1536-h1024-s-no-gm?authuser=0" alt="IEMECON 2027" class="footer-logo-img"></div>
+                <p>International Conference on IoT in Social, Mobile, Analytics and Cloud.</p>
+                <p>Hosted by UEM Jaipur.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="important_dates.html">Important Dates</a></li>
+                    <li><a href="call_for_papers.html">Call for Papers</a></li>
+                    <li><a href="submission.html">Submission Portal</a></li>
+                    <li><a href="registration_fees.html">Registration</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>Email: contact@iemecon2027.org</p>
+                <p>UEM Jaipur Campus, Rajasthan, India</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; IEMECON 2027. Site is designed and maintained by: <a href="https://github.com/soham1304s">Soham Mondal</a> and <a href="https://github.com/Voltshreyas">Shreyas Roy</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hero Animation
+            anime.timeline({ easing: 'easeOutExpo' })
+                .add({
+                    targets: '.hero h1',
+                    translateY: [100, 0],
+                    opacity: [0, 1],
+                    duration: 1200,
+                    delay: 300
+                })
+                .add({
+                    targets: '.hero p',
+                    translateY: [20, 0],
+                    opacity: [0, 1],
+                    duration: 800
+                }, '-=800');
+
+            // Scroll Reveal Animation Engine
+            const observerOptions = {
+                threshold: 0.2
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+
+                        if (target.classList.contains('timeline-container')) {
+                            anime({
+                                targets: '.timeline-item',
+                                translateX: [-50, 0],
+                                opacity: [0, 1],
+                                delay: anime.stagger(200),
+                                easing: 'easeOutExpo',
+                                duration: 1200
+                            });
+                        }
+
+                        if (target.classList.contains('info-grid')) {
+                            anime({
+                                targets: '.highlight-item',
+                                scale: [0.8, 1],
+                                opacity: [0, 1],
+                                delay: anime.stagger(150),
+                                easing: 'easeOutElastic(1, .8)',
+                                duration: 1500
+                            });
+                        }
+
+                        observer.unobserve(target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe containers
+            const timelineContainer = document.querySelector('.timeline-container');
+            const infoGrid = document.querySelector('.info-grid');
+            if (timelineContainer) observer.observe(timelineContainer);
+            if (infoGrid) observer.observe(infoGrid);
+        });
+    </script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
+
+
+
+
+
