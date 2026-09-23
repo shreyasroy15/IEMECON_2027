@@ -588,7 +588,7 @@ footer::before {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: min(100%, 340px);
+    width: min(100%, 240px);
     padding: 14px;
     margin-bottom: 24px;
     border-radius: 10px;
