@@ -1911,10 +1911,12 @@ footer::before {
 }
 
 .member-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 40px;
     margin-top: 50px;
+    margin-bottom: 60px;
 }
 
 .member-card {
@@ -1923,6 +1925,8 @@ footer::before {
     border-radius: 30px;
     text-align: center;
     border: 1px solid #f1f5f9;
+    flex: 1 1 320px;
+    max-width: 400px;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 10px 25px rgba(0,0,0,0.03);
     display: flex;
