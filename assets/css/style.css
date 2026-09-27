@@ -1480,6 +1480,8 @@ footer::before {
         width: 24px;
     }
 }
+
+.hero-description {
     max-width: 900px;
     margin: 0 auto 40px;
     line-height: 1.6;
