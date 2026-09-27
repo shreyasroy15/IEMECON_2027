@@ -75,6 +75,7 @@
             margin-bottom: 20px;
             background: linear-gradient(to bottom, #fff, var(--accent));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
             letter-spacing: -4px;
@@ -89,17 +90,20 @@
             text-transform: uppercase;
         }
 
-        /* Floating Nav Bar */
+        /* Filter Nav Bar */
         .filter-nav {
-            position: sticky;
-            top: 100px;
-            z-index: 1000;
+            position: relative;
+            z-index: 10;
             padding: 20px;
             margin-bottom: 60px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
         }
 
         .filter-container {
-            max-width: fit-content;
+            max-width: 100%;
+            width: fit-content;
             margin: 0 auto;
             background: rgba(15, 23, 42, 0.85); /* Darker glass for better contrast */
             backdrop-filter: blur(24px);
@@ -112,6 +116,7 @@
             gap: 5px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
             -ms-overflow-style: none; /* IE and Edge */
             scrollbar-width: none; /* Firefox */
         }
@@ -120,13 +125,6 @@
             display: none;
         }
         
-        @media (min-width: 768px) {
-            .filter-container {
-                justify-content: center;
-                max-width: 800px;
-            }
-        }
-
         .filter-pill {
             padding: 12px 28px;
             border-radius: 100px;
@@ -156,6 +154,49 @@
             box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.2);
             text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        @media (min-width: 768px) {
+            .filter-container {
+                justify-content: center;
+                max-width: 800px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .filter-nav {
+                padding: 12px 16px;
+                margin-bottom: 35px;
+            }
+
+            .filter-container {
+                padding: 6px;
+                gap: 4px;
+            }
+
+            .filter-pill {
+                padding: 10px 18px;
+                font-size: 0.8rem;
+                letter-spacing: 0.5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .filter-nav {
+                padding: 10px 12px;
+                margin-bottom: 25px;
+            }
+
+            .filter-container {
+                padding: 5px;
+                gap: 3px;
+                border-radius: 50px;
+            }
+
+            .filter-pill {
+                padding: 8px 14px;
+                font-size: 0.75rem;
+            }
         }
 
         /* Dynamic Masonry 2.0 */
@@ -352,7 +393,92 @@
         ::-webkit-scrollbar-thumb { background: var(--bg-card); border-radius: 10px; border: 2px solid var(--bg-deep); }
         ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-        
+        /* Sleek Android Menu Option for Gallery Navbar */
+        @media (max-width: 992px) {
+            .mobile-menu-btn {
+                display: flex !important;
+                flex-direction: column !important;
+                width: 42px !important;
+                height: 42px !important;
+                background: #0f172a !important;
+                border-radius: 12px !important;
+                justify-content: center !important;
+                align-items: center !important;
+                padding: 10px !important;
+                gap: 6px !important;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25) !important;
+                border: 1px solid rgba(255, 255, 255, 0.15) !important;
+                flex-shrink: 0 !important;
+                margin-left: auto !important;
+                cursor: pointer !important;
+                touch-action: manipulation;
+                z-index: 1002 !important;
+            }
+            .mobile-menu-btn span {
+                width: 100% !important;
+                height: 3px !important;
+                background: #ffffff !important;
+                border-radius: 3px !important;
+                display: block !important;
+                transition: all 0.3s ease !important;
+            }
+            .mobile-menu-btn:active {
+                transform: scale(0.95);
+                border-color: var(--accent) !important;
+            }
+            .logo img.site-logo {
+                height: 40px !important;
+            }
+            .logo {
+                gap: 5px !important;
+            }
+        }
+
+        /* Dedicated Android Device Specific Styling */
+        body.android-device .mobile-menu-btn,
+        html.android-device .mobile-menu-btn {
+            display: flex !important;
+            flex-direction: column !important;
+            width: 44px !important;
+            height: 44px !important;
+            background: #0f172a !important;
+            border-radius: 12px !important;
+            justify-content: center !important;
+            align-items: center !important;
+            padding: 10px !important;
+            gap: 6px !important;
+            box-shadow: 0 4px 14px rgba(14, 165, 233, 0.25) !important;
+            border: 1px solid rgba(14, 165, 233, 0.4) !important;
+            flex-shrink: 0 !important;
+            margin-left: auto !important;
+            cursor: pointer !important;
+            touch-action: manipulation;
+            z-index: 1002 !important;
+        }
+
+        body.android-device .nav-links,
+        html.android-device .nav-links {
+            display: none !important;
+        }
+
+        body.android-device .mobile-menu,
+        html.android-device .mobile-menu {
+            display: flex !important;
+        }
+
+        /* Mobile Menu Content Readability */
+        .mobile-menu {
+            color: #0a192f;
+        }
+        .mobile-menu .mobile-nav-links a {
+            color: #0a192f !important;
+            text-decoration: none;
+        }
+        .mobile-menu .mobile-dropdown-title,
+        .mobile-menu .mobile-nested-title {
+            color: #0a192f !important;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -829,6 +955,70 @@
             plb.onclick = (e) => {
                 if(e.target === plb) document.getElementById('plbClose').click();
             };
+
+            // 6. Android Device Detection & Gallery Navbar Mobile Menu Controller
+            const isAndroid = /Android/i.test(navigator.userAgent);
+            if (isAndroid) {
+                document.documentElement.classList.add('android-device');
+                document.body.classList.add('android-device');
+            }
+
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const closeMenuBtn = document.querySelector('.close-menu');
+            const mobileMenuElem = document.querySelector('.mobile-menu');
+
+            if (mobileMenuBtn && mobileMenuElem) {
+                const openDrawer = (e) => {
+                    if (e) e.stopPropagation();
+                    mobileMenuElem.classList.add('active');
+                    document.body.classList.add('menu-open');
+                };
+
+                const closeDrawer = (e) => {
+                    if (e) e.stopPropagation();
+                    mobileMenuElem.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                };
+
+                mobileMenuBtn.addEventListener('click', openDrawer);
+                mobileMenuBtn.addEventListener('touchend', (e) => {
+                    e.preventDefault();
+                    openDrawer();
+                }, { passive: false });
+
+                if (closeMenuBtn) {
+                    closeMenuBtn.addEventListener('click', closeDrawer);
+                    closeMenuBtn.addEventListener('touchend', (e) => {
+                        e.preventDefault();
+                        closeDrawer();
+                    }, { passive: false });
+                }
+
+                // Close drawer when clicking navigation links
+                const simpleNavLinks = mobileMenuElem.querySelectorAll('.mobile-nav-links a:not(.mobile-dropdown-title a)');
+                simpleNavLinks.forEach(link => {
+                    link.addEventListener('click', closeDrawer);
+                });
+
+                // Mobile accordion toggle for submenus
+                const accTitles = mobileMenuElem.querySelectorAll('.mobile-dropdown-title, .mobile-nested-title');
+                accTitles.forEach(title => {
+                    title.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        const content = this.nextElementSibling;
+                        if (!content) return;
+                        const isOpened = this.classList.contains('active');
+                        this.classList.toggle('active');
+                        if (!isOpened) {
+                            content.style.display = 'block';
+                            content.style.height = 'auto';
+                            content.style.opacity = '1';
+                        } else {
+                            content.style.display = 'none';
+                        }
+                    });
+                });
+            }
         });
     </script>
 </body>
