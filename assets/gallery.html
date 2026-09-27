@@ -15,8 +15,8 @@
         :root {
             --bg-deep: #020617;
             --bg-card: #0f172a;
-            --accent: #f59e0b;
-            --accent-glow: rgba(245, 158, 11, 0.4);
+            --accent: #0ea5e9;
+            --accent-glow: rgba(14, 165, 233, 0.4);
             --text-main: #f8fafc;
             --text-dim: #94a3b8;
             --glass: rgba(15, 23, 42, 0.7);
@@ -47,13 +47,13 @@
 
         /* Hero Section */
         .premium-hero {
-            height: 80vh;
+            min-height: 40vh;
+            padding-top: 100px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 0 20px;
             position: relative;
         }
 
@@ -94,47 +94,68 @@
             position: sticky;
             top: 100px;
             z-index: 1000;
-            padding: 20px 0;
-            margin-bottom: 80px;
+            padding: 20px;
+            margin-bottom: 60px;
         }
 
         .filter-container {
-            max-width: 800px;
+            max-width: fit-content;
             margin: 0 auto;
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            padding: 10px;
+            background: rgba(15, 23, 42, 0.85); /* Darker glass for better contrast */
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px;
             border-radius: 100px;
             display: flex;
-            justify-content: center;
-            gap: 10px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            justify-content: flex-start;
+            gap: 5px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            overflow-x: auto;
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .filter-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .filter-container {
+                justify-content: center;
+                max-width: 800px;
+            }
         }
 
         .filter-pill {
-            padding: 12px 30px;
+            padding: 12px 28px;
             border-radius: 100px;
-            border: none;
+            border: 1px solid transparent;
             background: transparent;
-            color: var(--text-dim);
+            color: #94a3b8;
             font-weight: 700;
             font-size: 0.85rem;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             text-transform: uppercase;
             letter-spacing: 1px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
         }
 
         .filter-pill:hover {
-            color: var(--text-main);
-            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
         }
 
         .filter-pill.active {
-            background: var(--accent);
-            color: var(--bg-deep);
-            box-shadow: 0 0 30px var(--accent-glow);
+            background: linear-gradient(135deg, #0ea5e9, #0284c7);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
 
         /* Dynamic Masonry 2.0 */
@@ -330,14 +351,46 @@
         ::-webkit-scrollbar-track { background: var(--bg-deep); }
         ::-webkit-scrollbar-thumb { background: var(--bg-card); border-radius: 10px; border: 2px solid var(--bg-deep); }
         ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        /* Sleek Mobile Menu Button for Gallery Android View */
+        @media (max-width: 992px) {
+            .mobile-menu-btn {
+                display: flex !important;
+                flex-direction: column !important;
+                width: 42px !important;
+                height: 42px !important;
+                background: #0f172a !important;
+                border-radius: 12px !important;
+                justify-content: center !important;
+                align-items: center !important;
+                padding: 10px !important;
+                gap: 6px !important;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+                border: 1px solid rgba(255,255,255,0.1) !important;
+                flex-shrink: 0 !important;
+                margin-left: auto !important;
+            }
+            .mobile-menu-btn span {
+                width: 100% !important;
+                height: 3px !important;
+                background: #ffffff !important;
+                border-radius: 3px !important;
+                display: block !important;
+            }
+            .logo img.site-logo {
+                height: 40px !important;
+            }
+            .logo {
+                gap: 5px !important;
+            }
+        }
     </style>
 </head>
 
 <body>
     <nav>
-        <a class="logo" href="../index.html"><img
-                src="images/img2.jpg"
-                alt="IEMECON 2027 logo" class="site-logo"></a>
+        <a class="logo" href="../index.html"><img src="images/img1.jpg" alt="IEMECON 2027 logo 1" class="site-logo" style="margin-right: 10px;">
+<img src="images/img2.jpg" alt="IEMECON 2027 logo 2" class="site-logo"></a>
         <ul class="nav-links">
             <li><a href="../index.html">Home</a></li>
             <li class="dropdown">
@@ -405,6 +458,94 @@
             <span></span>
         </div>
     </nav>
+
+        <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <a class="logo" href="../index.html"><img src="images/img1.jpg" alt="IEMECON 2027 logo 1" class="site-logo" style="margin-right: 10px;">
+<img src="images/img2.jpg" alt="IEMECON 2027 logo 2" class="site-logo"></a>
+            <div class="close-menu">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="../index.html">Home</a></li>
+            
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">About Us <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="about_us.html">About</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li class="mobile-nested-dropdown">
+                        <div class="mobile-nested-title">Previous Conferences <i class="fas fa-chevron-down"></i></div>
+                        <ul class="mobile-nested-content">
+                            <li><a href="Previous_Conferences/iemecon2019.html">IEMECON 2019</a></li>
+                            <li><a href="Previous_Conferences/iemecon2021.html">IEMECON 2021</a></li>
+                            <li><a href="Previous_Conferences/iemecon2023.html">IEMECON 2023</a></li>
+                            <li><a href="Previous_Conferences/iemecon2024.html">IEMECON 2024</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="sister_conference.html">Sister Conferences</a></li>
+                    <li><a href="Contributors.html">Contributors</a></li>
+                </ul>
+            </li>
+
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">Authors <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="call_for_papers.html">Call For Papers</a></li>
+                    <li><a href="technical_tracks.html">Technical Tracks</a></li>
+                    <li><a href="important_dates.html">Important Dates</a></li>
+                    <li><a href="author_guidelines.html">Author Guidelines</a></li>
+                    <li><a href="submission.html">Submission</a></li>
+                    <li><a href="proceedings.html">Conference Proceedings</a></li>
+                </ul>
+            </li>
+
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">Committee <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="committee/oversight_committee.html">Section Oversight Committee</a></li>
+                    <li><a href="committee/advisory_committee.html">Advisor Committee</a></li>
+                    <li><a href="committee/steering_committee.html">Steering Committee</a></li>
+                    <li><a href="committee/organizing_committee.html">Organizing Committee</a></li>
+                    <li><a href="committee/technical_program_committee.html">Technical Program Committee</a></li>
+                    <li><a href="committee/Session_chairs.html">Session Chairs</a></li>
+                </ul>
+            </li>
+
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">Program <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="program/program_schedule.html">Program Schedule</a></li>
+                    <li><a href="program/keynotes.html">Keynotes</a></li>
+                    <li><a href="program/special_sessions.html">Special Sessions</a></li>
+                </ul>
+            </li>
+
+            <li><a href="registration_fees.html">Registration</a></li>
+
+            <li class="mobile-dropdown">
+                <div class="mobile-dropdown-title">Venue <i class="fas fa-chevron-down"></i></div>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="venue/explore_pink_city.html">Explore Pink City</a></li>
+                    <li><a href="venue/accomodation.html">Accommodation</a></li>
+                    <li><a href="venue/reach_to_venue.html">Reach to Venue</a></li>
+                </ul>
+            </li>
+
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-footer">
+            <p>IEMECON 2027</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+
 
     <canvas id="particles-canvas"></canvas>
 
@@ -567,6 +708,11 @@
                     <li><a href="registration_fees.html">Registration</a></li>
                 </ul>
             </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>Email: contact@iemecon2027.org</p>
+                <p>UEM Jaipur Campus, Rajasthan, India</p>
+            </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; IEMECON 2027. Site is designed and maintained by: <a href="https://github.com/soham1304s">Soham Mondal</a> and <a href="https://github.com/shreyasroy15">Shreyas Roy</a></p>
@@ -601,7 +747,7 @@
             
             function animateParticles() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = '#f59e0b';
+                ctx.fillStyle = '#0ea5e9';
                 particles.forEach(p => {
                     p.x += p.speedX;
                     p.y += p.speedY;
