@@ -668,7 +668,7 @@ footer::before {
     right: -100%;
     width: 100%;
     height: 100vh;
-    background: rgba(10, 25, 47, 0.98);
+    background: rgba(255, 255, 255, 0.98); /* White */
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     z-index: 2000;
@@ -689,7 +689,7 @@ footer::before {
     align-items: center;
     margin-bottom: 40px;
     padding-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(10, 25, 47, 0.2);
 }
 
 .close-menu {
@@ -703,7 +703,7 @@ footer::before {
     position: absolute;
     width: 100%;
     height: 2px;
-    background: var(--white);
+    background: var(--primary);
     top: 50%;
     left: 0;
 }
@@ -718,7 +718,7 @@ footer::before {
 
 .mobile-nav-links > li {
     margin-bottom: 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(10, 25, 47, 0.15);
 }
 
 .mobile-nav-links li a, .mobile-dropdown-title, .mobile-nested-title {
@@ -726,7 +726,7 @@ footer::before {
     justify-content: space-between;
     align-items: center;
     padding: 15px 0;
-    color: var(--white);
+    color: var(--primary);
     font-size: 1.2rem;
     font-weight: 600;
     font-family: 'Outfit', sans-serif;
@@ -749,7 +749,7 @@ footer::before {
     padding-left: 20px;
     display: none; /* Controlled by JS/Anime.js */
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(0, 0, 0, 0.03);
     border-radius: 8px;
     margin-bottom: 10px;
 }
@@ -757,13 +757,13 @@ footer::before {
 .mobile-dropdown-content li a, .mobile-nested-title {
     font-size: 1rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(10, 25, 47, 0.8);
     padding: 12px 0;
 }
 
 .mobile-nested-content li a {
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(10, 25, 47, 0.6);
     padding: 10px 0;
 }
 
@@ -817,6 +817,11 @@ footer::before {
 
     .logo {
         font-size: 1.2rem;
+        gap: 5px;
+    }
+    
+    .logo img.site-logo {
+        height: 38px;
     }
 
     .hero h1 {
@@ -1115,27 +1120,95 @@ footer::before {
     background-attachment: fixed;
 }
 
+/* Hero Countdown Grid */
+.hero-countdown {
+    margin-top: 30px;
+    width: 100%;
+}
+
+.countdown-title {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.88);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+    font-weight: 600;
+}
+
+.hero-countdown-grid {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 14px;
+    margin: 0 auto;
+    max-width: 520px;
+}
+
+.hero-countdown-grid .stat-item {
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    padding: 12px 18px;
+    min-width: 90px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.hero-countdown-grid .stat-item:hover {
+    transform: translateY(-3px);
+}
+
+.hero-countdown-grid .stat-item h3 {
+    color: var(--accent);
+    font-size: 2.2rem;
+    margin: 0;
+    line-height: 1.15;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+}
+
+.hero-countdown-grid .stat-item p {
+    color: #cbd5e1;
+    font-size: 0.75rem;
+    margin: 4px 0 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.ieee-badge {
+    color: var(--accent) !important;
+}
+
+.event-sep {
+    opacity: 0.6;
+    margin: 0 6px;
+}
+
 .organizer-badge {
     display: inline-block;
-    padding: 12px 28px;
-    background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(245, 158, 11, 0.15));
+    padding: 0;
+    background: transparent;
     color: var(--secondary);
-    border-radius: 50px;
+    border-radius: 0;
     font-weight: 800;
     letter-spacing: 3px;
     margin-bottom: 28px;
     font-size: 0.85rem;
-    border: 1.5px solid rgba(245, 158, 11, 0.4);
+    border: none;
     text-transform: uppercase;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 16px rgba(245, 158, 11, 0.1);
+    box-shadow: none;
     animation: float-badge 3s ease-in-out infinite;
 }
 
 .organizer-badge:hover {
-    background: linear-gradient(135deg, rgba(245, 158, 11, 0.35), rgba(245, 158, 11, 0.25));
-    border-color: rgba(245, 158, 11, 0.6);
-    box-shadow: 0 12px 24px rgba(245, 158, 11, 0.15);
+    background: transparent;
+    border: none;
+    box-shadow: none;
 }
 
 .hero-slide .tagline {
@@ -1417,7 +1490,7 @@ footer::before {
 
 @media (max-width: 480px) {
     .organizer-badge {
-        padding: 10px 20px;
+        padding: 0;
         font-size: 0.75rem;
         letter-spacing: 1px;
         margin-bottom: 20px;
@@ -3150,8 +3223,13 @@ footer::before {
 
 /* Fix dropdown menu text visibility */
 .dropdown-content li a, 
-.nested-content li a,
+.nested-content li a {
+    color: var(--primary) !important;
+}
+
+.mobile-dropdown-content a,
 .mobile-dropdown-content li a,
+.mobile-nested-content a,
 .mobile-nested-content li a {
     color: var(--primary) !important;
 }
@@ -3169,3 +3247,225 @@ footer::before {
 .nav-links li a:hover {
     color: var(--secondary) !important;
 }
+
+
+/* Hide mobile menu entirely on desktop screens */
+@media (min-width: 993px) {
+    .mobile-menu {
+        display: none !important;
+    }
+}
+
+/* Override event-details to show only text */
+.event-details {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+
+.event-details:hover {
+    background: transparent !important;
+    border-color: transparent !important;
+    transform: translateY(0) !important;
+}
+
+/* Global Responsive Improvements */
+@media (max-width: 768px) {
+    /* Responsive typography */
+    h1 { font-size: clamp(1.9rem, 7vw, 3rem) !important; }
+    h2 { font-size: clamp(1.6rem, 5.5vw, 2.5rem) !important; }
+    h3 { font-size: clamp(1.3rem, 4.5vw, 2rem) !important; }
+    
+    /* Responsive padding for normal sections */
+    section:not(.hero-slider) { padding: 40px 15px !important; }
+    .container { padding: 0 15px !important; width: 100% !important; overflow-x: hidden; }
+    
+    /* Ensure grids stack nicely on mobile */
+    .info-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+    
+    /* Adjust welcome text size */
+    .welcome-text h2 { font-size: clamp(1.8rem, 6.5vw, 3.2rem) !important; }
+
+    /* Hero Slider Mobile & Android Perfection */
+    section.hero-slider {
+        padding: 0 !important;
+        height: 100vh !important;
+        height: 100svh !important;
+        min-height: 580px !important;
+        position: relative !important;
+        overflow: hidden !important;
+    }
+
+    .hero-slides {
+        height: 100% !important;
+        width: 100% !important;
+    }
+
+    .hero-slide {
+        padding: 75px 14px 45px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        overflow-y: auto !important;
+        box-sizing: border-box !important;
+    }
+
+    .hero-slide .hero-content {
+        margin: auto !important;
+        width: 100% !important;
+        max-width: 480px !important;
+        padding: 0 !important;
+    }
+
+    .hero-slide .organizer-badge {
+        font-size: 0.72rem !important;
+        letter-spacing: 1.2px !important;
+        margin-bottom: 6px !important;
+        padding: 4px 12px !important;
+        border-radius: 20px !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: blur(8px) !important;
+        display: inline-flex !important;
+        align-items: center !important;
+    }
+
+    .hero-slide .tagline {
+        font-size: 0.72rem !important;
+        letter-spacing: 1.2px !important;
+        margin-bottom: 6px !important;
+        line-height: 1.3 !important;
+    }
+
+    .hero-slide .hero-content h1 {
+        font-size: clamp(1.8rem, 6.5vw, 2.5rem) !important;
+        line-height: 1.15 !important;
+        margin-bottom: 8px !important;
+    }
+
+    .hero-slide .event-details {
+        display: inline-flex !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 0.76rem !important;
+        padding: 4px 12px !important;
+        margin: 4px auto 10px !important;
+        gap: 6px !important;
+        border-radius: 20px !important;
+        background: rgba(255, 255, 255, 0.12) !important;
+        color: rgba(255, 255, 255, 0.95) !important;
+    }
+
+    .hero-slide .hero-subtext {
+        font-size: clamp(0.8rem, 3vw, 0.92rem) !important;
+        line-height: 1.4 !important;
+        margin: 0 auto 14px !important;
+        max-width: 420px !important;
+        color: rgba(255, 255, 255, 0.92) !important;
+    }
+
+    .hero-slide .cta-buttons {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        margin: 0 auto 14px !important;
+        width: 100% !important;
+        max-width: 360px !important;
+    }
+
+    .hero-slide .cta-buttons .btn {
+        flex: 1 1 0 !important;
+        padding: 10px 10px !important;
+        font-size: 0.8rem !important;
+        border-radius: 30px !important;
+        white-space: nowrap !important;
+        justify-content: center !important;
+        min-width: 0 !important;
+    }
+
+    /* Hero countdown: 4 boxes on ONE row */
+    .hero-countdown {
+        margin-top: 4px !important;
+        width: 100% !important;
+        max-width: 360px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .hero-countdown .countdown-title {
+        font-size: 0.68rem !important;
+        letter-spacing: 1.5px !important;
+        margin-bottom: 6px !important;
+    }
+
+    .hero-countdown-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: center !important;
+        align-items: stretch !important;
+        gap: 6px !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+    }
+
+    .hero-countdown-grid .stat-item {
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+        max-width: 76px !important;
+        padding: 8px 2px !important;
+        border-radius: 10px !important;
+        background: rgba(15, 23, 42, 0.65) !important;
+        backdrop-filter: blur(8px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.18) !important;
+        box-sizing: border-box !important;
+        text-align: center !important;
+    }
+
+    .hero-countdown-grid .stat-item h3 {
+        font-size: clamp(1.15rem, 4.5vw, 1.45rem) !important;
+        line-height: 1.1 !important;
+        margin: 0 !important;
+        color: var(--accent) !important;
+    }
+
+    .hero-countdown-grid .stat-item p {
+        font-size: 0.58rem !important;
+        letter-spacing: 0.5px !important;
+        margin: 3px 0 0 !important;
+        color: #cbd5e1 !important;
+    }
+
+    .hero-dots {
+        bottom: 12px !important;
+        gap: 8px !important;
+    }
+
+    .dot {
+        width: 8px !important;
+        height: 4px !important;
+    }
+
+    .dot.active {
+        width: 22px !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero-slide .cta-buttons {
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+    .hero-slide .cta-buttons .btn {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    .hero-countdown-grid .stat-item h3 {
+        font-size: 1.1rem !important;
+    }
+}
+

@@ -10,18 +10,17 @@ const x = setInterval(function () {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    if (document.getElementById("days")) {
-        document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
-        document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
-        document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
-        document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+    const daysElements = document.querySelectorAll(".countdown-days");
+    if (daysElements.length > 0) {
+        daysElements.forEach(el => el.innerHTML = days < 10 ? "0" + days : days);
+        document.querySelectorAll(".countdown-hours").forEach(el => el.innerHTML = hours < 10 ? "0" + hours : hours);
+        document.querySelectorAll(".countdown-minutes").forEach(el => el.innerHTML = minutes < 10 ? "0" + minutes : minutes);
+        document.querySelectorAll(".countdown-seconds").forEach(el => el.innerHTML = seconds < 10 ? "0" + seconds : seconds);
     }
 
     if (distance < 0) {
         clearInterval(x);
-        if (document.getElementById("countdown")) {
-            document.getElementById("countdown").innerHTML = "CONFERENCE STARTED";
-        }
+        document.querySelectorAll(".hero-countdown").forEach(el => el.innerHTML = "CONFERENCE STARTED");
     }
 }, 1000);
 
@@ -59,26 +58,28 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.add('menu-open');
             
             // Entrance Animation
-            anime.timeline({ easing: 'easeOutExpo' })
-                .add({
-                    targets: '.mobile-menu-header',
-                    translateY: [-50, 0],
-                    opacity: [0, 1],
-                    duration: 800
-                })
-                .add({
-                    targets: mobileLinks,
-                    translateX: [50, 0],
-                    opacity: [0, 1],
-                    delay: anime.stagger(100),
-                    duration: 800
-                }, '-=400')
-                .add({
-                    targets: mobileFooter,
-                    translateY: [20, 0],
-                    opacity: [0, 1],
-                    duration: 600
-                }, '-=400');
+            if (typeof anime !== 'undefined') {
+                anime.timeline({ easing: 'easeOutExpo' })
+                    .add({
+                        targets: '.mobile-menu-header',
+                        translateY: [-50, 0],
+                        opacity: [0, 1],
+                        duration: 800
+                    })
+                    .add({
+                        targets: mobileLinks,
+                        translateX: [50, 0],
+                        opacity: [0, 1],
+                        delay: anime.stagger(100),
+                        duration: 800
+                    }, '-=400')
+                    .add({
+                        targets: mobileFooter,
+                        translateY: [20, 0],
+                        opacity: [0, 1],
+                        duration: 600
+                    }, '-=400');
+            }
         } else {
             mobileMenu.classList.remove('active');
             document.body.classList.remove('menu-open');
@@ -98,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dropdownTitles.forEach(title => {
         title.addEventListener('click', (e) => {
             const content = title.nextElementSibling;
+            if (!content) return;
             const isOpen = title.classList.contains('active');
             
             // Toggle current
@@ -105,27 +107,39 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (!isOpen) {
                 content.style.display = 'block';
-                const height = content.scrollHeight;
-                content.style.height = '0px';
-                
-                anime({
-                    targets: content,
-                    height: [0, height],
-                    opacity: [0, 1],
-                    duration: 500,
-                    easing: 'easeOutQuart'
-                });
+                if (typeof anime !== 'undefined') {
+                    const height = content.scrollHeight;
+                    content.style.height = '0px';
+                    
+                    anime({
+                        targets: content,
+                        height: [0, height],
+                        opacity: [0, 1],
+                        duration: 500,
+                        easing: 'easeOutQuart',
+                        complete: () => {
+                            content.style.height = 'auto';
+                        }
+                    });
+                } else {
+                    content.style.height = 'auto';
+                    content.style.opacity = '1';
+                }
             } else {
-                anime({
-                    targets: content,
-                    height: 0,
-                    opacity: 0,
-                    duration: 400,
-                    easing: 'easeInQuart',
-                    complete: () => {
-                        content.style.display = 'none';
-                    }
-                });
+                if (typeof anime !== 'undefined') {
+                    anime({
+                        targets: content,
+                        height: 0,
+                        opacity: 0,
+                        duration: 400,
+                        easing: 'easeInQuart',
+                        complete: () => {
+                            content.style.display = 'none';
+                        }
+                    });
+                } else {
+                    content.style.display = 'none';
+                }
             }
             
             e.stopPropagation();
@@ -217,27 +231,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroDots = document.querySelectorAll('.dot');
     const heroNext = document.querySelector('.hero-next');
     const heroPrev = document.querySelector('.hero-prev');
+    const heroSlider = document.querySelector('.hero-slider');
     let heroIndex = 0;
     let heroAutoPlay;
 
     if (heroSlides.length > 0) {
         const showHeroSlide = (index) => {
             heroSlides.forEach(slide => slide.classList.remove('active'));
-            heroDots.forEach(dot => dot.classList.remove('active'));
+            if (heroDots && heroDots.length > 0) {
+                heroDots.forEach(dot => dot.classList.remove('active'));
+            }
             
-            heroSlides[index].classList.add('active');
-            heroDots[index].classList.add('active');
+            if (heroSlides[index]) {
+                heroSlides[index].classList.add('active');
+            }
+            if (heroDots && heroDots[index]) {
+                heroDots[index].classList.add('active');
+            }
             
             // Text entrance animation
-            const content = heroSlides[index].querySelector('.hero-content');
-            anime({
-                targets: content.children,
-                translateY: [30, 0],
-                opacity: [0, 1],
-                delay: anime.stagger(150),
-                duration: 800,
-                easing: 'easeOutExpo'
-            });
+            const content = heroSlides[index] ? heroSlides[index].querySelector('.hero-content') : null;
+            if (content && typeof anime !== 'undefined') {
+                anime({
+                    targets: content.children,
+                    translateY: [25, 0],
+                    opacity: [0, 1],
+                    delay: anime.stagger(120),
+                    duration: 700,
+                    easing: 'easeOutExpo'
+                });
+            }
         };
 
         const nextHeroSlide = () => {
@@ -250,32 +273,68 @@ document.addEventListener('DOMContentLoaded', () => {
             showHeroSlide(heroIndex);
         };
 
-        if (heroNext) heroNext.addEventListener('click', () => {
-            nextHeroSlide();
-            resetHeroAuto();
-        });
-
-        if (heroPrev) heroPrev.addEventListener('click', () => {
-            prevHeroSlide();
-            resetHeroAuto();
-        });
-
-        heroDots.forEach((dot, idx) => {
-            dot.addEventListener('click', () => {
-                heroIndex = idx;
-                showHeroSlide(heroIndex);
+        if (heroNext) {
+            heroNext.addEventListener('click', () => {
+                nextHeroSlide();
                 resetHeroAuto();
             });
-        });
+        }
+
+        if (heroPrev) {
+            heroPrev.addEventListener('click', () => {
+                prevHeroSlide();
+                resetHeroAuto();
+            });
+        }
+
+        if (heroDots && heroDots.length > 0) {
+            heroDots.forEach((dot, idx) => {
+                dot.addEventListener('click', () => {
+                    heroIndex = idx;
+                    showHeroSlide(heroIndex);
+                    resetHeroAuto();
+                });
+            });
+        }
 
         const resetHeroAuto = () => {
-            clearInterval(heroAutoPlay);
-            heroAutoPlay = setInterval(nextHeroSlide, 8000);
+            if (heroAutoPlay) clearInterval(heroAutoPlay);
+            heroAutoPlay = setInterval(nextHeroSlide, 7000);
         };
 
-        heroAutoPlay = setInterval(nextHeroSlide, 8000);
+        resetHeroAuto();
         
-        // Initial animation for first slide
+        // Initial presentation for first slide
         showHeroSlide(0);
+
+        // Touch Swipe Support for Android & Mobile Devices
+        if (heroSlider) {
+            let touchStartX = 0;
+            let touchStartY = 0;
+            let touchEndX = 0;
+            let touchEndY = 0;
+
+            heroSlider.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                touchStartY = e.changedTouches[0].screenY;
+            }, { passive: true });
+
+            heroSlider.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                touchEndY = e.changedTouches[0].screenY;
+                const diffX = touchStartX - touchEndX;
+                const diffY = touchStartY - touchEndY;
+                
+                // Only trigger if horizontal swipe is stronger than vertical scroll
+                if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+                    if (diffX > 0) {
+                        nextHeroSlide();
+                    } else {
+                        prevHeroSlide();
+                    }
+                    resetHeroAuto();
+                }
+            }, { passive: true });
+        }
     }
 });

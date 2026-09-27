@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery - IEMECON 2027</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=12">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
@@ -352,38 +352,7 @@
         ::-webkit-scrollbar-thumb { background: var(--bg-card); border-radius: 10px; border: 2px solid var(--bg-deep); }
         ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-        /* Sleek Mobile Menu Button for Gallery Android View */
-        @media (max-width: 992px) {
-            .mobile-menu-btn {
-                display: flex !important;
-                flex-direction: column !important;
-                width: 42px !important;
-                height: 42px !important;
-                background: #0f172a !important;
-                border-radius: 12px !important;
-                justify-content: center !important;
-                align-items: center !important;
-                padding: 10px !important;
-                gap: 6px !important;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
-                border: 1px solid rgba(255,255,255,0.1) !important;
-                flex-shrink: 0 !important;
-                margin-left: auto !important;
-            }
-            .mobile-menu-btn span {
-                width: 100% !important;
-                height: 3px !important;
-                background: #ffffff !important;
-                border-radius: 3px !important;
-                display: block !important;
-            }
-            .logo img.site-logo {
-                height: 40px !important;
-            }
-            .logo {
-                gap: 5px !important;
-            }
-        }
+        
     </style>
 </head>
 
@@ -427,7 +396,6 @@
                 <ul class="dropdown-content">
                     <li><a href="committee/oversight_committee.html">Section Oversight Committee</a></li>
                     <li><a href="committee/advisory_committee.html">Advisor Committee</a></li>
-                    <li><a href="committee/steering_committee.html">Steering Committee</a></li>
                     <li><a href="committee/organizing_committee.html">Organizing Committee</a></li>
                     <li><a href="committee/technical_program_committee.html">Technical Program Committee</a></li>
                     <li><a href="committee/Session_chairs.html">Session Chairs</a></li>
@@ -719,7 +687,7 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=3"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const cards = document.querySelectorAll('.gallery-card');
