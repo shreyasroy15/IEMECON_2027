@@ -1,5 +1,5 @@
 // Countdown Timer
-const countdownDate = new Date("February 4, 2027 09:00:00").getTime();
+const countdownDate = new Date("December 2, 2027 09:00:00").getTime();
 
 const x = setInterval(function () {
     const now = new Date().getTime();
