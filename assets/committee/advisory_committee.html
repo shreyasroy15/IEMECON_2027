@@ -131,6 +131,75 @@
                 height: 32px;
             }
         }
+    
+        .tpc-page {
+            padding: 0 20px 100px;
+            background: linear-gradient(180deg, #eef2f7 0%, #f8fafc 180px);
+        }
+
+        .table-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            box-shadow: 0 18px 45px rgba(10, 25, 47, 0.09);
+        }
+
+        .tpc-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        .tpc-table th {
+            position: sticky;
+            top: 0;
+            z-index: 5;
+            padding: 18px 22px;
+            background: #071427;
+            color: var(--white);
+            text-align: left;
+            text-transform: uppercase;
+            font-size: 0.88rem;
+            letter-spacing: 0;
+        }
+
+        .tpc-table th:first-child,
+        .tpc-table td:first-child {
+            width: 35%;
+            text-align: left;
+        }
+
+        .tpc-table th:nth-child(2),
+        .tpc-table td:nth-child(2) {
+            width: 65%;
+            text-align: left;
+        }
+
+        .tpc-table td {
+            padding: 17px 22px;
+            border-top: 1px solid #e2e8f0;
+            color: #334155;
+            line-height: 1.55;
+            vertical-align: top;
+            overflow-wrap: anywhere;
+        }
+
+        .tpc-table tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .tpc-table tbody tr:hover {
+            background: #fffbeb;
+        }
+
+        .tpc-table .member-name {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
     </style>
 </head>
 <body>
@@ -310,179 +379,64 @@
                 </button>
             </div>
         </div>
-        <div class="committee-group">
-            <h2>International Advisory Committee</h2>
-            <div class="member-grid">
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>SM</span></div>
-                    <h3 class="member-name">Sourav Kumar Mukhopadhyay</h3>
-                    <p class="member-org">Augusta University, Georgia, USA</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>SS</span></div>
-                    <h3 class="member-name">Sesha Srinivasan</h3>
-                    <p class="member-org">Florida Polytechnic University, Lakeland, Florida, USA</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>LT</span></div>
-                    <h3 class="member-name">Lakshman S. Tamil</h3>
-                    <p class="member-org">University of Texas at Dallas, USA</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>MK</span></div>
-                    <h3 class="member-name">M. Shamim Kaiser</h3>
-                    <p class="member-org">Jahangirnagar University, Savar, Dhaka</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>RK</span></div>
-                    <h3 class="member-name">Ramani Kannan</h3>
-                    <p class="member-org">Universiti Teknologi PETRONAS, Malaysia</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>FK</span></div>
-                    <h3 class="member-name">Fumio Kodama</h3>
-                    <p class="member-org">University of Tokyo, Japan</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>BS</span></div>
-                    <h3 class="member-name">Bettina Von Stamm</h3>
-                    <p class="member-org">London Business School, UK</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>HR</span></div>
-                    <h3 class="member-name">Hari Reehal</h3>
-                    <p class="member-org">London South Bank University, UK</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>VL</span></div>
-                    <h3 class="member-name">Vasudevan Lakshminarayanan</h3>
-                    <p class="member-org">University of Waterloo, Canada</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>OY</span></div>
-                    <h3 class="member-name">Otani Yukitoshi</h3>
-                    <p class="member-org">Utsunomiya University, Japan</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>BC</span></div>
-                    <h3 class="member-name">Brian Culshaw</h3>
-                    <p class="member-org">Southampton University, UK</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>RT</span></div>
-                    <h3 class="member-name">Rainer Tutsch</h3>
-                    <p class="member-org">Institute of Production Measurement Technology, Germany</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>HC</span></div>
-                    <h3 class="member-name">Hyuang suck Cho</h3>
-                    <p class="member-org">Korea Advance Institute of Science & Technology, Korea</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>YL</span></div>
-                    <h3 class="member-name">Yu-Lung Lo</h3>
-                    <p class="member-org">National Cheng Kung University, Taiwan</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>DJ</span></div>
-                    <h3 class="member-name">Dipak C. Jain</h3>
-                    <p class="member-org">Chulalongkorn University, Bangkok, Thailand</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>LG</span></div>
-                    <h3 class="member-name">Lalit Kumar Goel</h3>
-                    <p class="member-org">Nanyang Technological University, Singapore</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>AM</span></div>
-                    <h3 class="member-name">Anandarup Mukherjee</h3>
-                    <p class="member-org">University of Cambridge, U.K</p>
-                </div>
+        <div class="table-container" style="margin-bottom: 40px;">
+            <h2 style="padding: 24px; margin: 0; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-bottom: 1px solid #e2e8f0; color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 1.6rem; display: flex; align-items: center; gap: 12px;"><i class="fas fa-globe" style="color: #38bdf8;"></i> International Advisory Committee</h2>
+            <table class="tpc-table" id="tpcTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Affiliation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="member-name">Sourav Kumar Mukhopadhyay</td><td>Augusta University, Georgia, USA</td></tr>
+                    <tr><td class="member-name">Sesha Srinivasan</td><td>Florida Polytechnic University, Lakeland, Florida, USA</td></tr>
+                    <tr><td class="member-name">Lakshman S. Tamil</td><td>University of Texas at Dallas, USA</td></tr>
+                    <tr><td class="member-name">M. Shamim Kaiser</td><td>Jahangirnagar University, Savar, Dhaka</td></tr>
+                    <tr><td class="member-name">Ramani Kannan</td><td>Universiti Teknologi PETRONAS, Malaysia</td></tr>
+                    <tr><td class="member-name">Fumio Kodama</td><td>University of Tokyo, Japan</td></tr>
+                    <tr><td class="member-name">Bettina Von Stamm</td><td>London Business School, UK</td></tr>
+                    <tr><td class="member-name">Hari Reehal</td><td>London South Bank University, UK</td></tr>
+                    <tr><td class="member-name">Vasudevan Lakshminarayanan</td><td>University of Waterloo, Canada</td></tr>
+                    <tr><td class="member-name">Otani Yukitoshi</td><td>Utsunomiya University, Japan</td></tr>
+                    <tr><td class="member-name">Brian Culshaw</td><td>Southampton University, UK</td></tr>
+                    <tr><td class="member-name">Rainer Tutsch</td><td>Institute of Production Measurement Technology, Germany</td></tr>
+                    <tr><td class="member-name">Hyuang suck Cho</td><td>Korea Advance Institute of Science & Technology, Korea</td></tr>
+                    <tr><td class="member-name">Yu-Lung Lo</td><td>National Cheng Kung University, Taiwan</td></tr>
+                    <tr><td class="member-name">Dipak C. Jain</td><td>Chulalongkorn University, Bangkok, Thailand</td></tr>
+                    <tr><td class="member-name">Lalit Kumar Goel</td><td>Nanyang Technological University, Singapore</td></tr>
+                    <tr><td class="member-name">Anandarup Mukherjee</td><td>University of Cambridge, U.K</td></tr>
+                </tbody>
+            </table>
         </div>
-        <div class="committee-group">
-            <h2>National Advisory Committee</h2>
-            <div class="member-grid">
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>AA</span></div>
-                    <h3 class="member-name">Ashwini Kumar Arya</h3>
-                    <p class="member-org">Jawaharlal Nehru University, New Delhi</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>TK</span></div>
-                    <h3 class="member-name">Taimoor Khan</h3>
-                    <p class="member-org">NIT Silchar, India</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>AK</span></div>
-                    <h3 class="member-name">Arvind Kumar</h3>
-                    <p class="member-org">Motilal Nehru National Institute of Technology Allahabad, Prayagraj</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>MK</span></div>
-                    <h3 class="member-name">Manjeet Kumar</h3>
-                    <p class="member-org">DTU Delhi</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>CP</span></div>
-                    <h3 class="member-name">Chandra Prakash</h3>
-                    <p class="member-org">NIT, Kurukshetra, India</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>UG</span></div>
-                    <h3 class="member-name">Utpal Garain</h3>
-                    <p class="member-org">Indian Statistical Institute, Kolkata</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>SL</span></div>
-                    <h3 class="member-name">Shyam Lal</h3>
-                    <p class="member-org">National Institute of Technology Surathkal, India</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>NK</span></div>
-                    <h3 class="member-name">Nand Kishore</h3>
-                    <p class="member-org">HBTU, Kanpur, Uttar Pradesh</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>VK</span></div>
-                    <h3 class="member-name">Vinay Kumar</h3>
-                    <p class="member-org">MNNIT Allahabad</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>SS</span></div>
-                    <h3 class="member-name">Sandeep Kumar Singh</h3>
-                    <p class="member-org">MNNIT Allahabad</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>RG</span></div>
-                    <h3 class="member-name">Rowdro Ghatak</h3>
-                    <p class="member-org">National Institute of Technology Durgapur, India</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>SC</span></div>
-                    <h3 class="member-name">Subrata Chattopadhyay</h3>
-                    <p class="member-org">National Institute of Technical Teachers' Training and Research, Kolkata, India</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>JM</span></div>
-                    <h3 class="member-name">Jitendra Bahadur Maurya</h3>
-                    <p class="member-org">NIT Patna, India</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>SM</span></div>
-                    <h3 class="member-name">Soumitra Kumar Mandal</h3>
-                    <p class="member-org">National Institute of Technical Teachers' Training & Research, Kolkata, India</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>VJ</span></div>
-                    <h3 class="member-name">Vijay Janyani</h3>
-                    <p class="member-org">Malaviya National Institute of Technology, Rajasthan, India</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo advisor-avatar"><span>SS</span></div>
-                    <h3 class="member-name">Seemanti Saha</h3>
-                    <p class="member-org">NIT Patna</p>
-                </div>
-            </div>
+        <div class="table-container" style="margin-bottom: 40px;">
+            <h2 style="padding: 24px; margin: 0; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-bottom: 1px solid #e2e8f0; color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 1.6rem; display: flex; align-items: center; gap: 12px;"><i class="fas fa-flag" style="color: #38bdf8;"></i> National Advisory Committee</h2>
+            <table class="tpc-table" id="tpcTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Affiliation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="member-name">Ashwini Kumar Arya</td><td>Jawaharlal Nehru University, New Delhi</td></tr>
+                    <tr><td class="member-name">Taimoor Khan</td><td>NIT Silchar, India</td></tr>
+                    <tr><td class="member-name">Arvind Kumar</td><td>Motilal Nehru National Institute of Technology Allahabad, Prayagraj</td></tr>
+                    <tr><td class="member-name">Manjeet Kumar</td><td>DTU Delhi</td></tr>
+                    <tr><td class="member-name">Chandra Prakash</td><td>NIT, Kurukshetra, India</td></tr>
+                    <tr><td class="member-name">Utpal Garain</td><td>Indian Statistical Institute, Kolkata</td></tr>
+                    <tr><td class="member-name">Shyam Lal</td><td>National Institute of Technology Surathkal, India</td></tr>
+                    <tr><td class="member-name">Nand Kishore</td><td>HBTU, Kanpur, Uttar Pradesh</td></tr>
+                    <tr><td class="member-name">Vinay Kumar</td><td>MNNIT Allahabad</td></tr>
+                    <tr><td class="member-name">Sandeep Kumar Singh</td><td>MNNIT Allahabad</td></tr>
+                    <tr><td class="member-name">Rowdro Ghatak</td><td>National Institute of Technology Durgapur, India</td></tr>
+                    <tr><td class="member-name">Subrata Chattopadhyay</td><td>National Institute of Technical Teachers' Training and Research, Kolkata, India</td></tr>
+                    <tr><td class="member-name">Jitendra Bahadur Maurya</td><td>NIT Patna, India</td></tr>
+                    <tr><td class="member-name">Soumitra Kumar Mandal</td><td>National Institute of Technical Teachers' Training & Research, Kolkata, India</td></tr>
+                    <tr><td class="member-name">Vijay Janyani</td><td>Malaviya National Institute of Technology, Rajasthan, India</td></tr>
+                    <tr><td class="member-name">Seemanti Saha</td><td>NIT Patna</td></tr>
+                </tbody>
+            </table>
         </div>
     </section>
 
@@ -518,27 +472,25 @@
         function filterMembers() {
             const input = document.getElementById('memberSearch');
             const filter = input.value.toLowerCase();
-            const cards = document.getElementsByClassName('member-card');
+            const tables = document.getElementsByClassName('tpc-table');
             const clearSearch = document.getElementById('clearSearch');
-            const groups = document.getElementsByClassName('committee-group');
-            let totalVisible = 0;
-
-            for (let i = 0; i < cards.length; i++) {
-                const name = cards[i].querySelector('.member-name').innerText.toLowerCase();
-                const org = cards[i].querySelector('.member-org').innerText.toLowerCase();
-                if (name.includes(filter) || org.includes(filter)) {
-                    cards[i].style.display = "";
-                    totalVisible++;
-                } else {
-                    cards[i].style.display = "none";
+            
+            for(let t=0; t<tables.length; t++) {
+                const tr = tables[t].getElementsByTagName('tr');
+                for (let i = 1; i < tr.length; i++) {
+                    const nameTd = tr[i].getElementsByTagName('td')[0];
+                    const affTd = tr[i].getElementsByTagName('td')[1];
+                    if (nameTd || affTd) {
+                        const nameText = nameTd ? (nameTd.textContent || nameTd.innerText).toLowerCase() : "";
+                        const affText = affTd ? (affTd.textContent || affTd.innerText).toLowerCase() : "";
+                        if (nameText.indexOf(filter) > -1 || affText.indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
                 }
             }
-
-            for (let j = 0; j < groups.length; j++) {
-                const visibleInGroup = groups[j].querySelectorAll('.member-card:not([style*="display: none"])').length;
-                groups[j].style.display = visibleInGroup > 0 ? "" : "none";
-            }
-
             clearSearch.classList.toggle('visible', filter.length > 0);
         }
 
