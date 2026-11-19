@@ -4586,3 +4586,298 @@ section.sponsors-edge-section,
         margin-top: 4px;
     }
 }
+
+/* ========================================================
+   Moments Multi-Item Slide Carousel (MAPCON Style)
+   ======================================================== */
+.moments-carousel-wrapper {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.moments-carousel-viewport {
+    overflow: hidden;
+    width: 100%;
+    border-radius: 18px;
+}
+
+.moments-carousel-track {
+    display: flex;
+    transition: transform 0.75s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+}
+
+.moments-carousel-slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    box-sizing: border-box;
+    padding: 8px 4px;
+}
+
+.moments-card {
+    position: relative;
+    height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+}
+
+.moments-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.15);
+}
+
+.moments-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.moments-card:hover img {
+    transform: scale(1.06);
+}
+
+.moments-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.75) 0%, rgba(15, 23, 42, 0.1) 45%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+}
+
+.moments-card:hover .moments-card-overlay {
+    opacity: 1;
+}
+
+.moments-card-tag {
+    color: #ffffff;
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Dots Pagination - Exact MAPCON Style */
+.moments-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 36px;
+}
+
+.moments-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background-color: #0f172a;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+}
+
+.moments-dot:hover {
+    background-color: #ea580c;
+    opacity: 0.85;
+}
+
+.moments-dot.active {
+    background-color: #ea580c;
+    width: 32px;
+    border-radius: 10px;
+}
+
+/* Floating Navigation Buttons */
+.moments-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.moments-arrow-prev {
+    left: -24px;
+}
+
+.moments-arrow-next {
+    right: -24px;
+}
+
+.moments-arrow:hover {
+    background: #ea580c;
+    color: #ffffff;
+    border-color: #ea580c;
+    box-shadow: 0 8px 25px rgba(234, 88, 12, 0.35);
+    transform: translateY(-50%) scale(1.08);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1200px) {
+    .moments-arrow-prev { left: 8px; }
+    .moments-arrow-next { right: 8px; }
+    .moments-card { height: 260px; }
+    .moments-carousel-slide { gap: 16px; }
+}
+
+@media (max-width: 992px) {
+    .moments-carousel-slide {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    .moments-card {
+        height: 240px;
+    }
+}
+
+@media (max-width: 576px) {
+    .moments-carousel-slide {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    .moments-card {
+        height: 220px;
+    }
+    .moments-arrow {
+        display: none;
+    }
+}
+
+/* ========================================================
+   Important Dates Banner Section (MAPCON Style)
+   ======================================================== */
+.dates-banner-section {
+    background-color: #ceffc0;
+    padding: 55px 0 65px;
+    position: relative;
+    overflow: hidden;
+}
+
+.dates-banner-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.dates-banner-header h2 {
+    font-size: 2.75rem;
+    color: #122e66;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.dates-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.dates-card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    padding: 22px 14px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    min-height: 145px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dates-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.1);
+}
+
+.dates-card-title {
+    color: #1e293b;
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 12px;
+}
+
+.dates-card-date {
+    color: #d52c2c;
+    font-size: 1.02rem;
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.2px;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1200px) {
+    .dates-cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+    .dates-card {
+        min-height: 135px;
+        padding: 20px 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dates-banner-section {
+        padding: 45px 0 50px;
+    }
+    .dates-banner-header h2 {
+        font-size: 2.2rem;
+    }
+    .dates-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+    .dates-card-title {
+        font-size: 0.84rem;
+    }
+    .dates-card-date {
+        font-size: 0.96rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .dates-cards-grid {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+        gap: 12px;
+    }
+    .dates-card {
+        min-height: auto;
+        padding: 18px 14px;
+    }
+}
