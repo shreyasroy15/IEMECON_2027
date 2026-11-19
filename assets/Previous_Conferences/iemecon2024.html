@@ -11,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <style>
         .hero-2024 {
-            height: 50vh;
+            min-height: 50vh;
             background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)), url('https://images.unsplash.com/photo-1475721027785-f74dea327912?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
@@ -21,7 +21,7 @@
             align-items: center;
             text-align: center;
             color: white;
-            padding: 20px;
+            padding: 60px 20px;
         }
 
         .content-section {
@@ -285,6 +285,14 @@
         <h1 style="font-size: 3.5rem; margin-bottom: 20px;">IEMECON 2024</h1>
         <p style="font-size: 1.2rem; max-width: 900px; opacity: 0.9;">The IEEE International Conference on Internet of Everything, Microwave Engineering, Communication, and Networks</p>
         <p style="margin-top: 20px; font-weight: 600; color: var(--secondary);"><i class="far fa-calendar-alt"></i> October 24-26, 2024 | <i class="fas fa-map-marker-alt"></i> Jaipur, India</p>
+        <div style="margin-top: 28px; display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;">
+            <a href="https://iemecon.uem.edu.in/" target="_blank" rel="noopener noreferrer" class="btn-action" style="margin-top: 0; background: var(--secondary); color: var(--primary); font-weight: 700; box-shadow: 0 10px 25px rgba(245, 158, 11, 0.35);">
+                <i class="fas fa-globe"></i> Visit Official 2024 Website <i class="fas fa-external-link-alt" style="margin-left: 6px; font-size: 0.85em;"></i>
+            </a>
+            <a href="https://ieeexplore.ieee.org/xpl/conhome/10845918/proceeding" target="_blank" rel="noopener noreferrer" class="btn-action" style="margin-top: 0; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); color: white; border: 1px solid rgba(255, 255, 255, 0.35);">
+                <i class="fas fa-book-open"></i> IEEE Xplore Proceedings <i class="fas fa-external-link-alt" style="margin-left: 6px; font-size: 0.85em;"></i>
+            </a>
+        </div>
     </header>
 
     <section class="content-section">
@@ -329,14 +337,14 @@
                 <i class="fas fa-external-link-square-alt" style="font-size: 3rem; color: var(--secondary); margin-bottom: 20px;"></i>
                 <h3>Conference Website</h3>
                 <p style="opacity: 0.8; margin-bottom: 20px;">Visit the official IEMECON 2024 website for comprehensive information about the conference, schedule, speakers, and participants.</p>
-                <a href="#" class="btn-action">Visit Conference Website</a>
+                <a href="https://iemecon.uem.edu.in/" target="_blank" rel="noopener noreferrer" class="btn-action">Visit Conference Website <i class="fas fa-external-link-alt" style="margin-left: 6px; font-size: 0.85em;"></i></a>
             </div>
             <div class="resource-card">
                 <i class="fas fa-database" style="font-size: 3rem; color: var(--secondary); margin-bottom: 20px;"></i>
                 <h3>Conference Proceedings</h3>
                 <p style="opacity: 0.8; margin-bottom: 20px;">The proceedings of IEMECON 2024 are available through IEEE Xplore. Access peer-reviewed research papers, technical presentations, and keynote sessions.</p>
                 <p style="font-style: italic; font-size: 0.85rem;">Organized by technical tracks and session themes.</p>
-                <a href="#" class="btn-action">View Proceedings on IEEE Xplore</a>
+                <a href="https://ieeexplore.ieee.org/xpl/conhome/10845918/proceeding" target="_blank" rel="noopener noreferrer" class="btn-action">View Proceedings on IEEE Xplore <i class="fas fa-external-link-alt" style="margin-left: 6px; font-size: 0.85em;"></i></a>
             </div>
         </div>
     </section>
@@ -345,9 +353,11 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h4>Organized by</h4>
-                <p>IEEE MTT-S &amp; AP-S Chapters and IEEE Delhi Section</p>
-                <p style="margin-top: 10px;">Hosted by University of Engineering &amp; Management (UEM), Jaipur</p>
-                <p class="footer-contact-info" style="margin-top: 14px;"><span>E:</span> <a href="mailto:contact@iemecon2027.org">contact@iemecon2027.org</a></p>
+                <div class="footer-logo-box">
+                    <img src="../images/logo_transparent.png" alt="IEMECON 2027" class="footer-brand-logo">
+                </div>
+                <p style="margin-top: 10px;">IEEE Student Branch, UEM Jaipur (STB10055)</p>
+                <p class="footer-contact-info" style="margin-top: 14px;"><span>E:</span> <a href="mailto:iemecon@uem.edu.in">iemecon@uem.edu.in</a></p>
             </div>
             <div class="footer-section">
                 <h4>Connect With IEEE</h4>
@@ -370,7 +380,7 @@
             <div class="footer-section">
                 <h4>Conference Manager</h4>
                 <p class="manager-name">Elisyan India Pvt. Ltd.</p>
-                <p class="footer-contact-info"><span>E:</span> <a href="mailto:contact@iemecon2027.org">contact@iemecon2027.org</a></p>
+                <p class="footer-contact-info"><span>E:</span> <a href="mailto:iemecon@uem.edu.in">iemecon@uem.edu.in</a></p>
                 <p class="footer-contact-info"><span>P:</span> <a href="tel:+918738937811">+91 873 893 7811</a></p>
                 <div class="footer-sub-contact">
                     <p class="sub-contact-title">For registrations related queries:</p>
@@ -385,9 +395,7 @@
                 <p>&copy; IEEE IEMECON &ndash; 2027. All rights reserved.</p>
             </div>
             <div class="footer-bottom-right">
-                <a href="#">Cancellation &amp; Refund Policy</a>
-                <a href="#">Terms &amp; Condition</a>
-                <a href="#">Privacy Policy</a>
+                <p>Designed &amp; Maintained By <a href="https://github.com/shreyasroy15" target="_blank" rel="noopener noreferrer">Shreyas Roy</a>, <a href="https://github.com/sohammondal" target="_blank" rel="noopener noreferrer">Soham Mondal</a> <a href="https://github.com/shreyasroy15/IEMECON_2027" target="_blank" rel="noopener noreferrer" title="View on GitHub"><i class="fab fa-github"></i></a></p>
             </div>
         </div>
         <button id="scrollToTopBtn" class="scroll-to-top" aria-label="Scroll to top" title="Scroll to top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
