@@ -1,9 +1,17 @@
-// Countdown Timer
-const countdownDate = new Date("December 2, 2027 09:00:00").getTime();
+// Countdown Timer - Target: IEMECON 2027 Conference Opening (December 2, 2027 09:00:00 IST)
+const countdownDate = new Date("2027-12-02T09:00:00+05:30").getTime();
 
-const x = setInterval(function () {
+function updateCountdown() {
     const now = new Date().getTime();
     const distance = countdownDate - now;
+
+    if (distance <= 0) {
+        if (typeof timerInterval !== 'undefined') clearInterval(timerInterval);
+        document.querySelectorAll(".hero-countdown").forEach(el => {
+            el.innerHTML = "<p class='countdown-title' style='color:#38bdf8;font-weight:800;letter-spacing:2px;'>CONFERENCE IS LIVE &bull; DECEMBER 2–4, 2027</p>";
+        });
+        return;
+    }
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -12,17 +20,15 @@ const x = setInterval(function () {
 
     const daysElements = document.querySelectorAll(".countdown-days");
     if (daysElements.length > 0) {
-        daysElements.forEach(el => el.innerHTML = days < 10 ? "0" + days : days);
-        document.querySelectorAll(".countdown-hours").forEach(el => el.innerHTML = hours < 10 ? "0" + hours : hours);
-        document.querySelectorAll(".countdown-minutes").forEach(el => el.innerHTML = minutes < 10 ? "0" + minutes : minutes);
-        document.querySelectorAll(".countdown-seconds").forEach(el => el.innerHTML = seconds < 10 ? "0" + seconds : seconds);
+        daysElements.forEach(el => el.textContent = days < 10 ? "0" + days : days);
+        document.querySelectorAll(".countdown-hours").forEach(el => el.textContent = hours < 10 ? "0" + hours : hours);
+        document.querySelectorAll(".countdown-minutes").forEach(el => el.textContent = minutes < 10 ? "0" + minutes : minutes);
+        document.querySelectorAll(".countdown-seconds").forEach(el => el.textContent = seconds < 10 ? "0" + seconds : seconds);
     }
+}
 
-    if (distance < 0) {
-        clearInterval(x);
-        document.querySelectorAll(".hero-countdown").forEach(el => el.innerHTML = "CONFERENCE STARTED");
-    }
-}, 1000);
+updateCountdown();
+const timerInterval = setInterval(updateCountdown, 1000);
 
 // Sticky Navbar effect
 window.onscroll = function () {
